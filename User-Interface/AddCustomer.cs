@@ -33,12 +33,6 @@ namespace User_Interface
             }
             return input;
         }
-
-        public void Greeting()
-        {
-            Console.WriteLine("   You have selected Add Customer,\n   What is the customer's name?");
-        }
-
         public string Name()
         {   
             Boolean correctFormat = true;

@@ -30,8 +30,7 @@ namespace User_Interface
                         string addCustomerAddress;
                         string addCustomerEmail;
                         string addCustomerPhone;
-
-                        customer.Greeting();
+                        Console.WriteLine("   You have selected Add Customer,\n   What is the customer's name?");
                         addCustomerName = customer.Name();
                         addCustomerAddress = customer.Address(addCustomerName);
                         addCustomerEmail = customer.Email(addCustomerName);
@@ -42,8 +41,23 @@ namespace User_Interface
                         break;
 
                     case MenuType.SearchForCustomer:
-                        Console.WriteLine("   You have selected Add Customer, \n   What is the customer's name?");
                         AscArt();
+                        customer = new AddCustomer();
+                        string searchCustomerName;
+                        string searchCustomerAddress;
+                        string searchCustomerEmail;
+                        string searchCustomerPhone;
+                        Console.WriteLine("   You have selected Search for a Customer, \n   What is the customer's name that you would like to search for?");
+                        searchCustomerName = customer.Name();
+                        searchCustomerAddress = customer.Address(searchCustomerName);
+                        searchCustomerEmail = customer.Email(searchCustomerName);
+                        searchCustomerPhone = customer.Phone(searchCustomerName);
+                        // search db for this customer, if true give a message you found the customer.
+                        // if false give an error message that the customer could not be found.
+                        Console.WriteLine($"   We were not able to find {searchCustomerName} as a current customer. " + 
+                                            $"\n   Perhaps you would like to add {searchCustomerName} as a customer using the 'Add Customer' feature." + 
+                                            "\n   Please press enter to continue.");
+                        Console.ReadLine();
                         break;
 
                     case MenuType.ViewStoreFrontInventory:

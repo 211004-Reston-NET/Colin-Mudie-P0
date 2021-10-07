@@ -3,12 +3,6 @@ namespace User_Interface
     public interface ICustomer
     {
         /// <summary>
-        /// This message will tell the user which Menu 
-        /// item they selected to be routed here
-        /// </summary>
-        void Greeting();
-
-        /// <summary>
         /// will return the name of the customer that is asked in the greeting method. use regex to not allow it to contain numbers.
         /// </summary>
         /// <returns> the name of the user will be returned so that we can reference it in our other questions. </returns>
