@@ -40,7 +40,7 @@ namespace User_Interface
             while (correctFormat)
             {
                 input = Console.ReadLine().Trim();
-                if (Regex.Match(input, @"^[a-zA-Z]+$").Success)
+                if (Regex.Match(input, @"^[a-zA-Z]+(\s[a-zA-Z]+)?$").Success)
                 {
                     correctFormat = false;
                 } else {

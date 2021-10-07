@@ -1,4 +1,5 @@
 ﻿using System;
+using Models;
 
 namespace User_Interface
 {
@@ -9,11 +10,14 @@ namespace User_Interface
             Boolean stillOn = true;
             
             IMenu page = new MainMenu();
-
+            Customer currentCustomer = new Customer();
             while (stillOn)
             {
                     // Store Manager ASCII Art
                 AscArt();
+                if (currentCustomer.Name != null){
+                    Console.WriteLine($"                               - Current Customer: {currentCustomer.Name}");
+                }
                 page.Menu();
                 MenuType currentPage = page.UserChoice();
                 switch (currentPage)
@@ -26,17 +30,14 @@ namespace User_Interface
                     case MenuType.AddCustomer:
                         AscArt();
                         ICustomer customer = new AddCustomer();
-                        string addCustomerName;
-                        string addCustomerAddress;
-                        string addCustomerEmail;
-                        string addCustomerPhone;
+                        
                         Console.WriteLine("   You have selected Add Customer,\n   What is the customer's name?");
-                        addCustomerName = customer.Name();
-                        addCustomerAddress = customer.Address(addCustomerName);
-                        addCustomerEmail = customer.Email(addCustomerName);
-                        addCustomerPhone = customer.Phone(addCustomerName);
+                        currentCustomer.Name = customer.Name();
+                        currentCustomer.Address = customer.Address(currentCustomer.Name);
+                        currentCustomer.Email = customer.Email(currentCustomer.Name);
+                        currentCustomer.PhoneNumber = customer.Phone(currentCustomer.Name);
                         // here we will create a new class of customer from the BL folder with the parameters gathered.
-                        Console.WriteLine($"   {addCustomerName} has been added to our list of customers. \n   Please press enter to continue.");
+                        Console.WriteLine($"   {currentCustomer.Name} has been added to our list of customers. \n   Please press enter to continue.");
                         Console.ReadLine();
                         break;
 
