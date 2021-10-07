@@ -8,60 +8,49 @@ namespace User_Interface
         {
             Boolean stillOn = true;
             
+            IMenu page = new MainMenu();
 
             while (stillOn)
             {
                     // Store Manager ASCII Art
                 AscArt();
-                Console.WriteLine("Welcome to the Store Manager \nPlease type the number from the list and press enter \n ");
-                Console.WriteLine("[1]: Add Customer" +
-                                "\n[2]: Search for Customer" +
-                                "\n[3]: View Store Front Inventory" +
-                                "\n[4]: Place Order" +
-                                "\n[5]: View Order History" +
-                                "\n[6]: Replenish Inventory" +
-                                "\n[7]: Exit");
-
-                string userInput = Console.ReadLine();
-
-                switch (userInput)
+                page.Menu();
+                MenuType currentPage = page.UserChoice();
+                switch (currentPage)
                 {
-                    case "1":
-                        //add user
+                    case MenuType.MainMenu:
                         AscArt();
-                            Console.WriteLine("You have selected Add Customer, \n what is the customer's name?");
-                            string addCustomerName = Console.ReadLine();
-                            Console.WriteLine($"What is {addCustomerName}'s address?");
-                            string addCustomerAddress = Console.ReadLine();
-                            Console.WriteLine($"What is {addCustomerName}'s email address?");
-                            string addCustomerEmail = Console.ReadLine();
-                            Console.WriteLine($"What is {addCustomerName}'s phone number?");
-                            string addCustomerPhone = Console.ReadLine();
-                            Console.WriteLine($"{addCustomerName} has been added to our list of customers. \n   Please press enter to continue.");
-                            Console.ReadLine();
+                        page = new MainMenu();
                         break;
-                    case "2":
-                        // search for customer
+                    case MenuType.AddCustomer:
                         AscArt();
+                        page = new AddCustomer();
+                        string addCustomerName = Console.ReadLine();
+                        Console.WriteLine($"What is {addCustomerName}'s address?");
+                        string addCustomerAddress = Console.ReadLine();
+                        Console.WriteLine($"What is {addCustomerName}'s email address?");
+                        string addCustomerEmail = Console.ReadLine();
+                        Console.WriteLine($"What is {addCustomerName}'s phone number?");
+                        string addCustomerPhone = Console.ReadLine();
+                        Console.WriteLine($"{addCustomerName} has been added to our list of customers. \n   Please press enter to continue.");
+                        Console.ReadLine();
                         break;
-                    case "3":
-                        // view store front inventory
+                    case MenuType.SearchForCustomer:
                         AscArt();
                         break;
-                    case "4":
-                        // place order
+                    case MenuType.ViewStoreFrontInventory:
                         AscArt();
                         break;
-                    case "5":
-                        // view order history
+                    case MenuType.PlaceOrder:
                         AscArt();
                         break;
-                    case "6":
-                        // replenish inventory
+                    case MenuType.ViewOrderHistory:
                         AscArt();
                         break;
-                    case "7":
-                        //exit
+                    case MenuType.ReplenishInventory:
+                        AscArt();
+                        break;
+                    case MenuType.Exit:
                         stillOn = false;
                         AscArt();
                         Console.WriteLine("Now Exiting, \nThank you for using the Store Manager!");

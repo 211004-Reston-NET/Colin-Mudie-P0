@@ -1,7 +1,8 @@
 namespace User_Interface
 {
     public enum MenuType
-    {
+    {   
+        MainMenu,
         AddCustomer,
         SearchForCustomer,
         ViewStoreFrontInventory,
@@ -24,5 +25,7 @@ namespace User_Interface
         /// </summary>
         /// <returns> This method will return a menu that the user will go to next. </returns>
         MenuType UserChoice();
+
+        
     }
 }
