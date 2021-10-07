@@ -22,39 +22,52 @@ namespace User_Interface
                         AscArt();
                         page = new MainMenu();
                         break;
+
                     case MenuType.AddCustomer:
                         AscArt();
-                        page = new AddCustomer();
-                        string addCustomerName = Console.ReadLine();
-                        Console.WriteLine($"What is {addCustomerName}'s address?");
-                        string addCustomerAddress = Console.ReadLine();
-                        Console.WriteLine($"What is {addCustomerName}'s email address?");
-                        string addCustomerEmail = Console.ReadLine();
-                        Console.WriteLine($"What is {addCustomerName}'s phone number?");
-                        string addCustomerPhone = Console.ReadLine();
-                        Console.WriteLine($"{addCustomerName} has been added to our list of customers. \n   Please press enter to continue.");
+                        ICustomer customer = new AddCustomer();
+                        string addCustomerName;
+                        string addCustomerAddress;
+                        string addCustomerEmail;
+                        string addCustomerPhone;
+
+                        customer.Greeting();
+                        addCustomerName = customer.Name();
+                        addCustomerAddress = customer.Address(addCustomerName);
+                        addCustomerEmail = customer.Email(addCustomerName);
+                        addCustomerPhone = customer.Phone(addCustomerName);
+                        // here we will create a new class of customer from the BL folder with the parameters gathered.
+                        Console.WriteLine($"   {addCustomerName} has been added to our list of customers. \n   Please press enter to continue.");
                         Console.ReadLine();
                         break;
+
                     case MenuType.SearchForCustomer:
+                        Console.WriteLine("   You have selected Add Customer, \n   What is the customer's name?");
                         AscArt();
                         break;
+
                     case MenuType.ViewStoreFrontInventory:
                         AscArt();
                         break;
+
                     case MenuType.PlaceOrder:
                         AscArt();
                         break;
+
                     case MenuType.ViewOrderHistory:
                         AscArt();
                         break;
+
                     case MenuType.ReplenishInventory:
                         AscArt();
                         break;
+
                     case MenuType.Exit:
                         stillOn = false;
                         AscArt();
                         Console.WriteLine("Now Exiting, \nThank you for using the Store Manager!");
                         break;
+
                     default:
                         AscArt();
                         Console.WriteLine("Please select one of the options from the list provided. \nPress Enter to Continue");

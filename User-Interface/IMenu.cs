@@ -26,6 +26,6 @@ namespace User_Interface
         /// <returns> This method will return a menu that the user will go to next. </returns>
         MenuType UserChoice();
 
-        
+    
     }
 }
