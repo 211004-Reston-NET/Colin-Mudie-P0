@@ -1,6 +1,6 @@
 using System;
 
-namespace Orders
+namespace Models
 {
     public class Orders
     // The orders contain information about customer orders.

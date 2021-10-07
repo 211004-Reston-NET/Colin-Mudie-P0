@@ -1,6 +1,6 @@
 using System;
 
-namespace LineItems
+namespace Models
 {
     public class LineItems
     // The line items contain information about a 

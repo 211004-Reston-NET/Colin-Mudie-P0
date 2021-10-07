@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Customer
+namespace Models
 {
     public class Customer
     // The customer model is supposed to hold 

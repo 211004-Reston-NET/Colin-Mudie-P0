@@ -1,6 +1,6 @@
 using System;
 
-namespace StoreFront
+namespace Models
 {
     public class StoreFront
     // The store front contains information pertaining the various store locations

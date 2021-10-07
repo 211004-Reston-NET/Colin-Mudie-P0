@@ -1,6 +1,6 @@
 using System;
 
-namespace Products
+namespace Models
 {
     public class Products
     // The product model is supposed to hold
