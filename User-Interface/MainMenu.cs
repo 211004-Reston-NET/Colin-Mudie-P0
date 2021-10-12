@@ -5,7 +5,9 @@ namespace User_Interface
     {
         public void Menu()
         {
-            Console.WriteLine("   Welcome to the Store Manager \n   Please type the number from the list and press enter \n ");
+            Console.WriteLine("   Welcome to Michigan Modular, " + 
+            "\n   We sell Eurorack Modular Synthesizers for the Michigan area." + 
+            "\n   Please type the number from the list below and press enter to begin\n ");
             Console.WriteLine("   [1]: Add Customer" +
                             "\n   [2]: Search for Customer" +
                             "\n   [3]: Show all Customers" +
@@ -13,7 +15,8 @@ namespace User_Interface
                             "\n   [5]: Place Order" +
                             "\n   [6]: View Order History" +
                             "\n   [7]: Replenish Inventory" +
-                            "\n   [8]: Exit");
+                            "\n   [0]: Exit" + 
+                            "\n   [8]: View Products");
         }
 
         public MenuType UserChoice()
@@ -35,8 +38,10 @@ namespace User_Interface
                     return MenuType.ViewOrderHistory;
                 case "7": 
                     return MenuType.ReplenishInventory;
-                case "8": 
+                case "0": 
                     return MenuType.Exit;
+                case "8": 
+                    return MenuType.ShowProducts;
                 default:
                     Console.WriteLine("   Please select one of the options from the list provided. \n   Press Enter to Continue");
                     Console.ReadLine();

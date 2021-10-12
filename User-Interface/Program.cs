@@ -40,6 +40,10 @@ namespace User_Interface
                         AscArt();
                         page = new ShowStoreFronts(new StoreFrontBL(new Repository()));
                         break;
+                    case MenuType.ShowProducts:
+                        AscArt();
+                        page = new ShowProducts(new ProductsBL(new Repository()));
+                        break;
                     case MenuType.PlaceOrder:
                         AscArt();
                         break;
@@ -73,12 +77,12 @@ namespace User_Interface
         public static void AscArt(){
             // Store Manager ASCII Art String
             Console.Clear();
-            Console.WriteLine("   _____  __                        __  ___                                       " +
-            "\n  / ___/ / /_ ____   _____ ___     /  |/  /____ _ ____   ____ _ ____ _ ___   _____" +
-            "\n  \\__ \\ / __// __ \\ / ___// _ \\   / /|_/ // __ `// __ \\ / __ `// __ `// _ \\ / ___/" +
-            "\n ___/ // /_ / /_/ // /   /  __/  / /  / // /_/ // / / // /_/ // /_/ //  __// /    " +
-            "\n/____/ \\__/ \\____//_/    \\___/  /_/  /_/ \\__,_//_/ /_/ \\__,_/ \\__, / \\___//_/     " +
-            "\n                                                             /____/                ");
+            Console.WriteLine("    __  ___ _        __     _                         __  ___            __        __            " +
+            "\n   /  |/  /(_)_____ / /_   (_)____ _ ____ _ ____     /  |/  /____   ____/ /__  __ / /____ _ _____" +
+            "\n  / /|_/ // // ___// __ \\ / // __ `// __ `// __ \\   / /|_/ // __ \\ / __  // / / // // __ `// ___/" +
+            "\n / /  / // // /__ / / / // // /_/ // /_/ // / / /  / /  / // /_/ // /_/ // /_/ // // /_/ // /    " +
+            "\n/_/  /_//_/ \\___//_/ /_//_/ \\__, / \\__,_//_/ /_/  /_/  /_/ \\____/ \\__,_/ \\__,_//_/ \\__,_//_/     " +
+            "\n                           /____/                                                                ");
         }
     }
 }

@@ -7,6 +7,7 @@ namespace User_Interface
         ShowCustomers,
         SearchForCustomer,
         ViewStoreFrontInventory,
+        ShowProducts,
         PlaceOrder,
         ViewOrderHistory,
         ReplenishInventory,

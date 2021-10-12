@@ -5,22 +5,21 @@ using Models;
 
 namespace User_Interface
 {
-    public class ShowStoreFronts : IMenu
+    public class ShowProducts : IMenu
     {
-        private IStoreFrontBL _storeFront;
-        public ShowStoreFronts(IStoreFrontBL p_storeFront)
+        private IProductsBL _products;
+        public ShowProducts(IProductsBL p_products)
         {
-            _storeFront = p_storeFront;
+            _products = p_products;
         }
         public void Menu()
         {
-            Console.WriteLine("Michigan Modular Locations");
+            Console.WriteLine("Current List of Products");
             Console.WriteLine("-------------------------");
-            List<StoreFront> listOfStores = _storeFront.GetStoreFrontList();
-            for (var i = 0; i < listOfStores.Count; i++)
+            List<Products> listOfProducts = _products.GetProductsList();
+            foreach (Products prod in listOfProducts)
             {
-                Console.WriteLine(i + 1);
-                Console.WriteLine(listOfStores[i]);
+                Console.WriteLine(prod);
                 Console.WriteLine("-------------------------");
             }
             Console.WriteLine("[0] - Go back");
