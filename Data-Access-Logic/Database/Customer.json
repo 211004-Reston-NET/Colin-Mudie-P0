@@ -1,0 +1,14 @@
+[
+  {
+    "Name": "Colin",
+    "Address": "123 Main St",
+    "Email": "colin@example.com",
+    "PhoneNumber": "123-123-1234"
+  },
+  {
+    "Name": "Colin Mudie",
+    "Address": "5170 E Broom",
+    "Email": "colin.mudie@revature.net",
+    "PhoneNumber": "2489247877"
+  }
+]
