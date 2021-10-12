@@ -38,8 +38,8 @@ namespace User_Interface
                         break;
                     case MenuType.ViewStoreFrontInventory:
                         AscArt();
+                        page = new ShowStoreFronts(new StoreFrontBL(new Repository()));
                         break;
-
                     case MenuType.PlaceOrder:
                         AscArt();
                         break;
