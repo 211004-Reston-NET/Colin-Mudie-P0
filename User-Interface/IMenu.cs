@@ -4,6 +4,7 @@ namespace User_Interface
     {   
         MainMenu,
         AddCustomer,
+        ShowCustomers,
         SearchForCustomer,
         ViewStoreFrontInventory,
         PlaceOrder,

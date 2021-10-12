@@ -1,67 +1,67 @@
 using System;
 using System.Text.RegularExpressions;
+using Business_Logic;
+using Models;
 
 namespace User_Interface
 {
-    public class AddCustomer : ICustomer
+    public class AddCustomer : IMenu
     {
-        public string Address(string customerName)
-        {   
-            Boolean correctFormat = true;
-            string input = "";
-            while (correctFormat){
-                Console.WriteLine($"   What is {customerName}'s address?");
-                input = Console.ReadLine().Trim();
-                if (Regex.Match(input, @"^[0-9]+\s+([a-zA-Z]+|[a-zA-Z]+\s[a-zA-Z]+)$").Success){
-                    correctFormat = false;
-                }
-                
-            }
-            return input;
-        }
-
-        public string Email(string customerName)
+        private static Customer _customer = new Customer();
+        private ICustomerBL _customerBL;
+        public AddCustomer(ICustomerBL p_customerBL)
         {
-            Boolean correctFormat = true;
-            string input = "";
-            while (correctFormat){
-                Console.WriteLine($"   What is {customerName}'s email address?");
-                input = Console.ReadLine().Trim();
-                if (Regex.Match(input, @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$").Success){
-                    correctFormat = false;
-                }
-            }
-            return input;
+            _customerBL = p_customerBL;
         }
-        public string Name()
-        {   
-            Boolean correctFormat = true;
-            string input ="";
-            while (correctFormat)
+        public void Menu()
+        {
+            Console.WriteLine("Adding a new Customer");
+            Console.WriteLine("Name - " + _customer.Name);
+            Console.WriteLine("Address - " + _customer.Address);
+            Console.WriteLine("Email - " + _customer.Email);
+            Console.WriteLine("Phone - " + _customer.PhoneNumber);
+            Console.WriteLine("[5] - Save Customer");
+            Console.WriteLine("[4] - Edit Name");
+            Console.WriteLine("[3] - Edit Address");
+            Console.WriteLine("[2] - Edit Email");
+            Console.WriteLine("[1] - Edit Phone Number");
+            Console.WriteLine("[0] - Go Back");
+        }
+        public MenuType UserChoice()
+        {
+            string userChoice = Console.ReadLine();
+            switch (userChoice)
             {
-                input = Console.ReadLine().Trim();
-                if (Regex.Match(input, @"^[a-zA-Z]+(\s[a-zA-Z]+)?$").Success)
-                {
-                    correctFormat = false;
-                } else {
-                    Console.WriteLine("   Please enter a name for the customer without any numbers or special characters.");
-                }
+                case "5":
+                    //Add implementation to talk to the repository method to add a restaurant
+                    _customerBL.AddCustomer(_customer);
+                    Console.WriteLine($"{_customer.Name} has been added to our list of customers. \n   Please press enter to continue.");
+                    Console.ReadLine();
+                    return MenuType.MainMenu;
+                case "4":
+                    Console.WriteLine("Type in the new value for the Name");
+                    _customer.Name = Console.ReadLine();
+                    return MenuType.AddCustomer;
+                case "3":
+                    Console.WriteLine("Type in the new value for the Address");
+                    _customer.Address = Console.ReadLine();
+                    return MenuType.AddCustomer;
+                case "2":
+                    Console.WriteLine("Type in the new value for the Email");
+                    _customer.Email = Console.ReadLine();
+                    return MenuType.AddCustomer;
+                case "1":
+                    Console.WriteLine("Type in the new value for Phone Number");
+                    _customer.PhoneNumber = Console.ReadLine();
+                    return MenuType.AddCustomer;
+                case "0":
+                    return MenuType.MainMenu;
+                default:
+                    Console.WriteLine("Please input a valid response!");
+                    Console.WriteLine("Press Enter to continue");
+                    Console.ReadLine();
+                    return MenuType.AddCustomer;
             }
-            return input;
-        }
-
-        public string Phone(string customerName)
-        {   
-            Boolean correctFormat = true;
-            string input = "";
-            while (correctFormat){
-                Console.WriteLine($"   What is {customerName}'s phone number?");
-                input = Console.ReadLine().Trim();
-                if (Regex.Match(input, @"^\(?([0-9]{3})\)?[-.●]?([0-9]{3})[-.●]?([0-9]{4})$").Success){
-                    correctFormat = false;
-                }
-            }
-            return input;
         }
     }
 }

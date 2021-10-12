@@ -2,6 +2,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Models\Models.csproj" />
+    <ProjectReference Include="..\Business-Logic\Business-Logic.csproj" />
+    <ProjectReference Include="..\Data-Access-Logic\Data-Access-Logic.csproj" />
   </ItemGroup>
 
   <PropertyGroup>

@@ -1,5 +1,7 @@
 ﻿using System;
 using Models;
+using Business_Logic;
+using Data_Access_Logic;
 
 namespace User_Interface
 {
@@ -28,39 +30,12 @@ namespace User_Interface
                         break;
 
                     case MenuType.AddCustomer:
-                        AscArt();
-                        ICustomer customer = new AddCustomer();
-                        
-                        Console.WriteLine("   You have selected Add Customer,\n   What is the customer's name?");
-                        currentCustomer.Name = customer.Name();
-                        currentCustomer.Address = customer.Address(currentCustomer.Name);
-                        currentCustomer.Email = customer.Email(currentCustomer.Name);
-                        currentCustomer.PhoneNumber = customer.Phone(currentCustomer.Name);
-                        // here we will create a new class of customer from the BL folder with the parameters gathered.
-                        Console.WriteLine($"   {currentCustomer.Name} has been added to our list of customers. \n   Please press enter to continue.");
-                        Console.ReadLine();
+                        AscArt();                        
+                        page = new AddCustomer(new CustomerBL(new Repository()));
                         break;
-
                     case MenuType.SearchForCustomer:
                         AscArt();
-                        customer = new AddCustomer();
-                        string searchCustomerName;
-                        string searchCustomerAddress;
-                        string searchCustomerEmail;
-                        string searchCustomerPhone;
-                        Console.WriteLine("   You have selected Search for a Customer, \n   What is the customer's name that you would like to search for?");
-                        searchCustomerName = customer.Name();
-                        searchCustomerAddress = customer.Address(searchCustomerName);
-                        searchCustomerEmail = customer.Email(searchCustomerName);
-                        searchCustomerPhone = customer.Phone(searchCustomerName);
-                        // search db for this customer, if true give a message you found the customer.
-                        // if false give an error message that the customer could not be found.
-                        Console.WriteLine($"   We were not able to find {searchCustomerName} as a current customer. " + 
-                                            $"\n   Perhaps you would like to add {searchCustomerName} as a customer using the 'Add Customer' feature." + 
-                                            "\n   Please press enter to continue.");
-                        Console.ReadLine();
                         break;
-
                     case MenuType.ViewStoreFrontInventory:
                         AscArt();
                         break;
@@ -76,6 +51,10 @@ namespace User_Interface
                     case MenuType.ReplenishInventory:
                         AscArt();
                         break;
+                    case MenuType.ShowCustomers:
+                        AscArt();
+                        page = new ShowCustomers(new CustomerBL(new Repository()));
+                        break;
 
                     case MenuType.Exit:
                         stillOn = false;
@@ -90,19 +69,6 @@ namespace User_Interface
                         break;
                 }
             }
-            /* 
-                UI needs
-            - Add Customer (loop questions in case proper validation is not met to reattempt)
-                - ask name
-                - ask address
-                - ask email
-                - ask phone number
-            - Search for customer
-                - input requires name and address to find customer in db.
-            - View storefront inventory
-                - 
-            */
-
         }
         public static void AscArt(){
             // Store Manager ASCII Art String
