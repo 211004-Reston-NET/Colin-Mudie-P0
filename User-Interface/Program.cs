@@ -15,6 +15,7 @@ namespace User_Interface
             Customer currentCustomer = new Customer();
             while (stillOn)
             {
+                Console.Clear();
                     // Store Manager ASCII Art
                 AscArt();
                 if (currentCustomer.Name != null){
@@ -40,9 +41,13 @@ namespace User_Interface
                         AscArt();
                         page = new ShowStoreFronts(new StoreFrontBL(new Repository()));
                         break;
-                    case MenuType.ShowProducts:
+                    case MenuType.ShowProductsMtP:
                         AscArt();
-                        page = new ShowProducts(new ProductsBL(new Repository()));
+                        page = new ShowProducts(new ProductsBL(new Repository()), "MtP");
+                        break;
+                    case MenuType.ShowProductsROak:
+                        AscArt();
+                        page = new ShowProducts(new ProductsBL(new Repository()), "ROak");
                         break;
                     case MenuType.PlaceOrder:
                         AscArt();

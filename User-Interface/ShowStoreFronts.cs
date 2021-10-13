@@ -23,6 +23,8 @@ namespace User_Interface
                 Console.WriteLine(listOfStores[i]);
                 Console.WriteLine("-------------------------");
             }
+            Console.WriteLine("[1] - Michigan Modular Mt Pleasant");
+            Console.WriteLine("[2] - Michigan Modular Royal Oak");
             Console.WriteLine("[0] - Go back");
         }
 
@@ -31,6 +33,11 @@ namespace User_Interface
             string userChoice = Console.ReadLine();
             switch (userChoice)
             {
+
+                case "1":
+                    return MenuType.ShowProductsMtP;
+                case "2":
+                    return MenuType.ShowProductsROak;
                 case "0":
                     return MenuType.MainMenu;
                 default:

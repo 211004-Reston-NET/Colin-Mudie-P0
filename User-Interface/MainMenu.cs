@@ -41,7 +41,7 @@ namespace User_Interface
                 case "0": 
                     return MenuType.Exit;
                 case "8": 
-                    return MenuType.ShowProducts;
+                    return MenuType.ShowProductsMtP;
                 default:
                     Console.WriteLine("   Please select one of the options from the list provided. \n   Press Enter to Continue");
                     Console.ReadLine();

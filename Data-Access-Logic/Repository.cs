@@ -10,7 +10,8 @@ namespace Data_Access_Logic
     {
         private const string _customerFilepath = "./../Data-Access-Logic/Database/Customer.json";
         private const string _storefrontFilePath = "./../Data-Access-Logic/Database/Storefront.json";
-        private const string _productsFilepath = "./../Data-Access-Logic/Database/Products.json";
+        private const string _productsFilepathMtP = "./../Data-Access-Logic/Database/MtPleasantProducts.json";
+        private const string _productsFilepathDet = "./../Data-Access-Logic/Database/RoyalOakProducts.json";
         private string _jsonString;
         public Customer AddCustomer(Customer p_customer)
         {
@@ -28,9 +29,21 @@ namespace Data_Access_Logic
             return JsonSerializer.Deserialize<List<Customer>>(_jsonString);
         }
 
-        public List<Products> GetProductsList()
+        public List<Products> GetProductsList(string p_store)
         {
-            _jsonString = File.ReadAllText(_productsFilepath);
+            switch (p_store)
+            {
+                case "ROak":
+                    _jsonString = File.ReadAllText(_productsFilepathDet);
+                    break;
+                case "MtP":
+                    _jsonString = File.ReadAllText(_productsFilepathMtP);
+                    break;
+                default:
+                    _jsonString = File.ReadAllText(_productsFilepathMtP);
+                break;
+            }
+            
             return JsonSerializer.Deserialize<List<Products>>(_jsonString);
         }
 

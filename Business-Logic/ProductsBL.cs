@@ -12,9 +12,9 @@ namespace Business_Logic
             _repo = p_repo;
         }
 
-        public List<Products> GetProductsList()
+        public List<Products> GetProductsList(string p_store)
         {
-            return _repo.GetProductsList();
+            return _repo.GetProductsList(p_store);
         }
     }
 }

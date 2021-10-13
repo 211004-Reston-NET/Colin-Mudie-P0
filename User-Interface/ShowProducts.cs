@@ -8,15 +8,17 @@ namespace User_Interface
     public class ShowProducts : IMenu
     {
         private IProductsBL _products;
-        public ShowProducts(IProductsBL p_products)
+        private string _store;
+        public ShowProducts(IProductsBL p_products, string p_store)
         {
             _products = p_products;
+            _store = p_store;
         }
         public void Menu()
         {
             Console.WriteLine("Current List of Products");
             Console.WriteLine("-------------------------");
-            List<Products> listOfProducts = _products.GetProductsList();
+            List<Products> listOfProducts = _products.GetProductsList(_store);
             foreach (Products prod in listOfProducts)
             {
                 Console.WriteLine(prod);

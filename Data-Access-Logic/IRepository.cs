@@ -26,7 +26,8 @@ namespace Data_Access_Logic
         /// <summary>
         /// This will return a list of products from the db.
         /// </summary>
+        /// <param name="p_store"> the parameter being passed in will be the store name, in order to determine which stores product list to view. </param>
         /// <returns> will return a list of products. </returns>
-        List<Products> GetProductsList();
+        List<Products> GetProductsList(string p_store);
     }
 }
