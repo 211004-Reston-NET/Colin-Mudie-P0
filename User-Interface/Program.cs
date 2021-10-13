@@ -12,14 +12,13 @@ namespace User_Interface
             Boolean stillOn = true;
             
             IMenu page = new MainMenu();
-            Customer currentCustomer = new Customer();
             while (stillOn)
             {
                 Console.Clear();
                     // Store Manager ASCII Art
                 AscArt();
-                if (currentCustomer.Name != null){
-                    Console.WriteLine($"                               - Current Customer: {currentCustomer.Name}");
+                if (SingletonCustomer.customer.Name != null){
+                    Console.WriteLine($"                               - Current Customer: {SingletonCustomer.customer.Name}");
                 }
                 page.Menu();
                 MenuType currentPage = page.UserChoice();
@@ -36,6 +35,7 @@ namespace User_Interface
                         break;
                     case MenuType.SearchForCustomer:
                         AscArt();
+                        page = new SearchCustomers(new CustomerBL(new Repository()));
                         break;
                     case MenuType.ViewStoreFrontInventory:
                         AscArt();
