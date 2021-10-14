@@ -8,13 +8,7 @@
   {
     "Name": "Colin Mudie",
     "Address": "5170 E Broom",
-    "Email": "colin.mudie@revature.net",
-    "PhoneNumber": "2489247877"
-  },
-  {
-    "Name": "Adam",
-    "Address": null,
-    "Email": null,
-    "PhoneNumber": null
+    "Email": "colin.mudie@example.net",
+    "PhoneNumber": "1234567890"
   }
 ]

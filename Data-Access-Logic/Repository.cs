@@ -8,10 +8,7 @@ namespace Data_Access_Logic
 {
     public class Repository : IRepository
     {
-        private const string _customerFilepath = "./../Data-Access-Logic/Database/Customer.json";
-        private const string _storefrontFilePath = "./../Data-Access-Logic/Database/Storefront.json";
-        private const string _productsFilepathMtP = "./../Data-Access-Logic/Database/MtPleasantProducts.json";
-        private const string _productsFilepathDet = "./../Data-Access-Logic/Database/RoyalOakProducts.json";
+        private const string _filepath = "./../Data-Access-Logic/Database/";
         private string _jsonString;
         public Customer AddCustomer(Customer p_customer)
         {
@@ -19,13 +16,13 @@ namespace Data_Access_Logic
             listOfCustomers.Add(p_customer);
             _jsonString = JsonSerializer.Serialize(listOfCustomers, new JsonSerializerOptions{WriteIndented = true});
 
-            File.WriteAllText(_customerFilepath, _jsonString);
+            File.WriteAllText(_filepath+"Customer.json", _jsonString);
             return p_customer;
         }
 
         public List<Customer> GetCustomerList()
         {
-            _jsonString = File.ReadAllText(_customerFilepath);
+            _jsonString = File.ReadAllText(_filepath+"Customer.json");
             return JsonSerializer.Deserialize<List<Customer>>(_jsonString);
         }
 
@@ -34,13 +31,13 @@ namespace Data_Access_Logic
             switch (p_store)
             {
                 case "ROak":
-                    _jsonString = File.ReadAllText(_productsFilepathDet);
+                    _jsonString = File.ReadAllText(_filepath+"RoyalOakProducts.json");
                     break;
                 case "MtP":
-                    _jsonString = File.ReadAllText(_productsFilepathMtP);
+                    _jsonString = File.ReadAllText(_filepath+"MtPleasantProducts.json");
                     break;
                 default:
-                    _jsonString = File.ReadAllText(_productsFilepathMtP);
+                    _jsonString = File.ReadAllText(_filepath+"MtPleasantProducts.json");
                 break;
             }
             
@@ -49,7 +46,7 @@ namespace Data_Access_Logic
 
         public List<StoreFront> GetStoreFrontList()
         {
-            _jsonString = File.ReadAllText(_storefrontFilePath);
+            _jsonString = File.ReadAllText(_filepath+"StoreFront.json");
             return JsonSerializer.Deserialize<List<StoreFront>>(_jsonString);
         }
     }
