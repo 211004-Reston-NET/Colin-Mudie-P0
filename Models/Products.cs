@@ -8,7 +8,7 @@ namespace Models
     {
         private string _name;
         //when implemented with SQL DB change String to Decimal for price
-        private string _price;
+        private decimal _price;
         private string _description;
         private string _brand;
         private string _category;
@@ -23,7 +23,7 @@ namespace Models
                 _name = value;
             }
         }
-        public string Price {
+        public decimal Price {
             get
             {
                 return _price;

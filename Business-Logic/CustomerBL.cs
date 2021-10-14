@@ -27,5 +27,10 @@ namespace Business_Logic
         {
             return _repo.GetCustomerList();
         }
+
+        public Orders PlaceOrder(Customer p_customer, Orders P_order)
+        {
+            return _repo.PlaceOrder(p_customer, P_order);
+        }
     }
 }

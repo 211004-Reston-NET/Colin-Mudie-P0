@@ -18,16 +18,25 @@ namespace Data_Access_Logic
         List<Customer> GetCustomerList();
         
         /// <summary>
-        /// This will return a list of Store Fronts from the db.
+        ///     This will return a list of Store Fronts from the db.
         /// </summary>
         /// <returns> will return a list of StoreFronts.</returns>
         List<StoreFront> GetStoreFrontList();
 
         /// <summary>
-        /// This will return a list of products from the db.
+        ///     This will return a list of products from the db.
         /// </summary>
         /// <param name="p_store"> the parameter being passed in will be the store name, in order to determine which stores product list to view. </param>
         /// <returns> will return a list of products. </returns>
-        List<Products> GetProductsList(string p_store);
+        List<LineItems> GetLineItemsList(string p_store);
+
+        /// <summary>
+        ///     This will grab the current list of customers, then grab the current list of Orders for our selected Customer,
+        ///     Then it will add our new order to the list and send back to the db.
+        /// </summary>
+        /// <param name="p_customer"> The customer that will be edited from the List of Customers </param>
+        /// <param name="p_order"> The Order that will be added to the list of Orders on our p_customer </param>
+        /// <returns> Will return the Order that was placed. </returns>
+        Orders PlaceOrder(Customer p_customer, Orders p_order);
     }
 }

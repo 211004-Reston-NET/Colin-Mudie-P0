@@ -1,13 +1,55 @@
 using System;
+using System.Collections.Generic;
 
 namespace Models
 {
     public class Orders
     // The orders contain information about customer orders.
     {
-        // list of Line Items
-        // StoreFront's address
-            // decimal is used with money values
-        decimal totalPrice;
+        private List<LineItems> _lineItems = new List<LineItems>();
+        private string _address;
+        private decimal _totalPrice;
+
+        public List<LineItems> LineItems
+        {
+            get
+            {
+                return _lineItems;
+            }
+            set
+            {
+                _lineItems = value;
+            }
+        }
+        public string Address
+        {
+            get
+            {
+                return _address;
+            }
+            set
+            {
+                _address = value;
+            }
+        }
+        public decimal TotalPrice
+        {
+            get
+            {
+                return _totalPrice;
+            }
+            set
+            {
+                _totalPrice = value;
+            }
+        }
+        public override string ToString()
+        {
+            // foreach (LineItems lineItem in _lineItems)
+            // {
+
+            // }
+            return $"Items: {LineItems} \nAddress: {Address} \n____________ \nPrice: {TotalPrice}";
+        }
     }
 }

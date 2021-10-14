@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Text.Json;
@@ -26,14 +27,14 @@ namespace Data_Access_Logic
             return JsonSerializer.Deserialize<List<Customer>>(_jsonString);
         }
 
-        public List<Products> GetProductsList(string p_store)
+        public List<LineItems> GetLineItemsList(string p_store)
         {
             switch (p_store)
             {
-                case "ROak":
+                case "Royal Oak":
                     _jsonString = File.ReadAllText(_filepath+"RoyalOakProducts.json");
                     break;
-                case "MtP":
+                case "Mt Pleasant":
                     _jsonString = File.ReadAllText(_filepath+"MtPleasantProducts.json");
                     break;
                 default:
@@ -41,13 +42,33 @@ namespace Data_Access_Logic
                 break;
             }
             
-            return JsonSerializer.Deserialize<List<Products>>(_jsonString);
+            return JsonSerializer.Deserialize<List<LineItems>>(_jsonString);
         }
 
         public List<StoreFront> GetStoreFrontList()
         {
             _jsonString = File.ReadAllText(_filepath+"StoreFront.json");
             return JsonSerializer.Deserialize<List<StoreFront>>(_jsonString);
+        }
+
+        public Orders PlaceOrder(Customer p_customer, Orders p_order)
+        {
+            List<Customer> listOfCustomers = GetCustomerList();
+            foreach (Customer customer in listOfCustomers)
+            {
+                Console.WriteLine(customer);
+                if (customer.Name == p_customer.Name && 
+                    customer.Address == p_customer.Address && 
+                    customer.Email == p_customer.Email && 
+                    customer.PhoneNumber == p_customer.PhoneNumber)
+                {
+                    customer.Orders.Add(p_order);
+                    Console.WriteLine(customer.Orders);
+                    _jsonString = JsonSerializer.Serialize(listOfCustomers, new JsonSerializerOptions { WriteIndented = true });
+                    File.WriteAllText(_filepath + "Customer.json", _jsonString);
+                }
+            }
+            return p_order;
         }
     }
 }

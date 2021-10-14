@@ -3,10 +3,35 @@ using System;
 namespace Models
 {
     public class LineItems
-    // The line items contain information about a 
-    // particular product and its quantity.
     {
-        // product obj
-        int quantity;
+        private Products _product;
+        private int _quantity;
+
+        public Products Product 
+        { 
+            get
+            {
+                return _product;
+            }
+            set
+            {
+                _product = value;
+            }
+        }
+        public int Quantity
+        {
+            get
+            {
+                return _quantity;
+            }
+            set
+            {   
+                _quantity = value;                
+            }
+        }
+        public override string ToString()
+        {
+            return $"Brand: {Product.Brand} \nName: {Product.Name} \nPrice: {Product.Price} \nDescription: {Product.Description} \nCategory: {Product.Category} \nQuantity: {Quantity}";
+        }
     }
 }

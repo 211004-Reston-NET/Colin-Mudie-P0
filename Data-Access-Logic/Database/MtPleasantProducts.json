@@ -1,30 +1,42 @@
-[
+[   
     {
-        "Brand": "Make Noise",
-        "Name": "Maths",
-        "Price": "290.00",
-        "Description": "Make Noise Maths is a Control Voltage Generator and Processor indebted to the classic designs of Don Buchla in his Model 257 and Model 281 function generators.\n   The design of Buchla's envelopes allowed them to easily switch between cycling and triggered envelopes, providing LFOs as well, and at high enough speeds, Oscillators. \n   This design was then appropriated for the Serge Dual Universal Slope Generator,\n   which is an apt name as it can basically create any kind of rising and falling voltage. \n   Maths continues in this great tradition of versatile and function-packed modules.",
-        "Category": "Envelope Generator"
+        "Product": {
+            "Brand": "Make Noise",
+            "Name": "Maths",
+            "Price": 290.00,
+            "Description": "Make Noise Maths is a Control Voltage Generator and Processor indebted to the classic designs of Don Buchla in his Model 257 and Model 281 function generators.\n   The design of Buchla's envelopes allowed them to easily switch between cycling and triggered envelopes, providing LFOs as well, and at high enough speeds, Oscillators. \n   This design was then appropriated for the Serge Dual Universal Slope Generator,\n   which is an apt name as it can basically create any kind of rising and falling voltage. \n   Maths continues in this great tradition of versatile and function-packed modules.",
+            "Category": "Envelope Generator"
+        },
+        "Quantity": 3
     },
     {
-        "Brand": "Make Noise",
-        "Name": "Morphagene",
-        "Price": "529.00",
-        "Description": "Morphagene, from Make Noise, is not just an upgrade of their iconic Phonogene. It is a whole new way to deal with sampling and audio processing. \n   Recorded audio can be spliced and re-arranged, as well as directionally switched, playing forward and backward.\n   The audio can be Granularized and Layered for thick textures. \n   Sounds can be read off of an SD card or be fed in for live audio processing.\n   With voltage control over every parameter on the module, this is the ultimate sample mangler.",
-        "Category": "Sampler"
+        "Product": {
+            "Brand": "Make Noise",
+            "Name": "Morphagene",
+            "Price": 529.00,
+            "Description": "Morphagene, from Make Noise, is not just an upgrade of their iconic Phonogene. It is a whole new way to deal with sampling and audio processing. \n   Recorded audio can be spliced and re-arranged, as well as directionally switched, playing forward and backward.\n   The audio can be Granularized and Layered for thick textures. \n   Sounds can be read off of an SD card or be fed in for live audio processing.\n   With voltage control over every parameter on the module, this is the ultimate sample mangler.",
+            "Category": "Sampler"
+        },
+        "Quantity": 2
     },
     {
-        "Brand": "Intellijel",
-        "Name": "Metropolix",
-        "Price": "579.00",
-        "Description": "Bustling with activity in the center of your Eurorack system, Metropolix is the next realization of Intellijel's hit Metropolis sequencer. \n   At first glance, Metropolix looks much like its predecessor,\n   offering the same general user interface of sliders and switches to set pitches, step duration, and gate type. \n   And while the workflow is indeed familiar to users of the Metropolis,\n   its capabilities have been wildly expanded to bring more variation to your eight stage sequences than ever before.",
-        "Category": "Sequencer"
+        "Product": {
+            "Brand": "Intellijel",
+            "Name": "Metropolix",
+            "Price": 579.00,
+            "Description": "Bustling with activity in the center of your Eurorack system, Metropolix is the next realization of Intellijel's hit Metropolis sequencer. \n   At first glance, Metropolix looks much like its predecessor,\n   offering the same general user interface of sliders and switches to set pitches, step duration, and gate type. \n   And while the workflow is indeed familiar to users of the Metropolis,\n   its capabilities have been wildly expanded to bring more variation to your eight stage sequences than ever before.",
+            "Category": "Sequencer"
+        },
+        "Quantity": 7
     },
     {
-        "Brand": "ALM Busy Circuits",
-        "Name": "Akemie's Castle Dual FM Oscillator",
-        "Price": "599.00",
-        "Description": "The ALM Busy Circuits Akemie’s Castle is a dual VCO that utilizes Yamaha IC’s to achieve 4 Operator digital FM.\n   Each of the module’s operators features independent waveform sections,\n   a frequency multiplier, and both manual and remote level controls.\n   Each of the operators can be combined in various ways across the oscillator sections, which can be further combined with independent feedback control settings on each VCO.\n   All of this combined produces an incredibly wide range of available sounds.",
-        "Category": "Oscillator"
+        "Product": {
+            "Brand": "ALM Busy Circuits",
+            "Name": "Akemie's Castle",
+            "Price": 599.00,
+            "Description": "The ALM Busy Circuits Akemie’s Castle is a dual VCO that utilizes Yamaha IC’s to achieve 4 Operator digital FM.\n   Each of the module’s operators features independent waveform sections,\n   a frequency multiplier, and both manual and remote level controls.\n   Each of the operators can be combined in various ways across the oscillator sections, which can be further combined with independent feedback control settings on each VCO.\n   All of this combined produces an incredibly wide range of available sounds.",
+            "Category": "Oscillator"
+        },
+        "Quantity": 1
     }
 ]
