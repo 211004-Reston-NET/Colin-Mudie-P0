@@ -10,5 +10,11 @@
     "Address": "5170 E Broom",
     "Email": "colin.mudie@example.net",
     "PhoneNumber": "1234567890"
+  },
+  {
+    "Name": "Lorem I",
+    "Address": "3315 Side Rd",
+    "Email": "loremIpsum@test.com",
+    "PhoneNumber": "800-888-1233"
   }
 ]

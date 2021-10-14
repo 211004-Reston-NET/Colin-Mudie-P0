@@ -23,9 +23,9 @@ namespace User_Interface
                 Console.WriteLine(listOfStores[i]);
                 Console.WriteLine("-------------------------");
             }
-            Console.WriteLine("[1] - Michigan Modular Mt Pleasant");
-            Console.WriteLine("[2] - Michigan Modular Royal Oak");
-            Console.WriteLine("[0] - Go back");
+            Console.WriteLine("   [1] - Michigan Modular Mt Pleasant");
+            Console.WriteLine("   [2] - Michigan Modular Royal Oak");
+            Console.WriteLine("\n   [0] - Go back");
         }
 
         public MenuType UserChoice()

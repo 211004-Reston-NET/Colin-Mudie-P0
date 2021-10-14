@@ -15,8 +15,8 @@ namespace User_Interface
                             "\n   [5]: Place Order" +
                             "\n   [6]: View Order History" +
                             "\n   [7]: Replenish Inventory" +
-                            "\n   [0]: Exit" + 
-                            "\n   [8]: View Products");
+                            "\n   [8]: View Products" +
+                            "\n\n   [0]: Exit");
         }
 
         public MenuType UserChoice()

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Data_Access_Logic;
 using Models;
 
@@ -15,6 +16,10 @@ namespace Business_Logic
 
         public Customer AddCustomer(Customer p_customer)
         {
+            if (p_customer.Name == null || p_customer.Address == null || p_customer.Email == null || p_customer.PhoneNumber == null)
+            {
+                throw new Exception("You must have a value in all of the properties of the customer class");
+            }
             return _repo.AddCustomer(p_customer);
         }
 

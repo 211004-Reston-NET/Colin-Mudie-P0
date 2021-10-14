@@ -24,7 +24,7 @@ namespace User_Interface
                 Console.WriteLine(prod);
                 Console.WriteLine("-------------------------");
             }
-            Console.WriteLine("[0] - Go back");
+            Console.WriteLine("\n   [0] - Go back");
         }
 
         public MenuType UserChoice()
