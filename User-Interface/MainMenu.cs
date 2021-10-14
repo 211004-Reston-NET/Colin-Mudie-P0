@@ -7,16 +7,16 @@ namespace User_Interface
         {
             Console.WriteLine("   Welcome to Michigan Modular, " + 
             "\n   We sell Eurorack Modular Synthesizers for the Michigan area." + 
-            "\n   Please type the number from the list below and press enter to begin\n ");
-            Console.WriteLine("   [1]: Add Customer" +
-                            "\n   [2]: Search for Customer" +
-                            "\n   [3]: Show all Customers" +
-                            "\n   [4]: View Store Fronts" +
-                            "\n   [5]: Place Order" +
-                            "\n   [6]: View Order History" +
-                            "\n   [7]: Replenish Inventory" +
-                            "\n   [8]: View Products" +
-                            "\n\n   [0]: Exit");
+            "\n   Please type the number from the list below and press enter to begin\n "+
+            "\n   [1]: Add Customer" +
+            "\n   [2]: Search for Customer" +
+            "\n   [3]: Show all Customers" +
+            "\n   [4]: View Store Fronts" +
+            "\n   [5]: Place Order" +
+            "\n   [6]: View Order History" +
+            "\n   [7]: Replenish Inventory" +
+            "\n   [8]: View Products" +
+            "\n\n   [0]: Exit");
         }
 
         public MenuType UserChoice()
@@ -43,7 +43,8 @@ namespace User_Interface
                 case "8": 
                     return MenuType.ShowProductsMtP;
                 default:
-                    Console.WriteLine("   Please select one of the options from the list provided. \n   Press Enter to Continue");
+                    Console.WriteLine("   Please select one of the options from the list provided. "+
+                                    "\n   Please press enter to Continue");
                     Console.ReadLine();
                     return MenuType.MainMenu;
             }

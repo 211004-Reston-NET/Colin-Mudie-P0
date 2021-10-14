@@ -16,8 +16,8 @@ namespace User_Interface
         }
         public void Menu()
         {
-            Console.WriteLine("Current List of Customers");
-            Console.WriteLine("-------------------------");
+            Console.WriteLine("Current List of Customers"+
+                            "\n-------------------------");
             List<Customer> listOfCustomers = _customerBL.GetCustomerList();
             foreach (Customer customer in listOfCustomers)
             {
@@ -35,8 +35,8 @@ namespace User_Interface
                 case "0":
                     return MenuType.MainMenu;
                 default:
-                    Console.WriteLine("Please input a valid response!");
-                    Console.WriteLine("Press Enter to continue");
+                    Console.WriteLine("Please input a valid response!"+
+                                    "\nPress Enter to continue");
                     Console.ReadLine();
                     return MenuType.MainMenu;
             }

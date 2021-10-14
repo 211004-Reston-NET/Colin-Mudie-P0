@@ -10,7 +10,7 @@ namespace User_Interface
     public class SearchCustomers : IMenu
     {
         // private static Customer _customer = new Customer();
-        
+
         private ICustomerBL _customerBL;
         public SearchCustomers(ICustomerBL p_customerBL)
         {
@@ -18,19 +18,19 @@ namespace User_Interface
         }
         public void Menu()
         {
-            Console.WriteLine("Customer Search");
-            Console.WriteLine("-------------------------");
-            Console.WriteLine("Name - " + SingletonCustomer.customer.Name);
-            Console.WriteLine("Address - " + SingletonCustomer.customer.Address);
-            Console.WriteLine("Email - " + SingletonCustomer.customer.Email);
-            Console.WriteLine("Phone - " + SingletonCustomer.customer.PhoneNumber);
-            Console.WriteLine("-------------------------");
-            Console.WriteLine("   [1] - Edit Name");
-            Console.WriteLine("   [2] - Edit Address");
-            Console.WriteLine("   [3] - Edit Email");
-            Console.WriteLine("   [4] - Edit Phone Number");
-            Console.WriteLine("   [5] - Search Customer");
-            Console.WriteLine("\n   [0] - Go Back");
+            Console.WriteLine("Customer Search" +
+                            "\n-------------------------" +
+                            "\nName - " + SingletonCustomer.customer.Name +
+                            "\nAddress - " + SingletonCustomer.customer.Address +
+                            "\nEmail - " + SingletonCustomer.customer.Email +
+                            "\nPhone - " + SingletonCustomer.customer.PhoneNumber +
+                            "\n-------------------------" +
+                            "\n   [1] - Edit Name" +
+                            "\n   [2] - Edit Address" +
+                            "\n   [3] - Edit Email" +
+                            "\n   [4] - Edit Phone Number" +
+                            "\n   [5] - Search Customer" +
+                            "\n\n   [0] - Go Back");
         }
 
         public MenuType UserChoice()
@@ -59,34 +59,29 @@ namespace User_Interface
                     return MenuType.SearchForCustomer;
 
                 case "5":
-                    //Add implementation to talk to the repository method to add a restaurant
                     List<Customer> listOfCustomers = _customerBL.GetCustomerList();
                     foreach (Customer customer in listOfCustomers)
                     {
                         if (customer.Name == SingletonCustomer.customer.Name && customer.Address == SingletonCustomer.customer.Address && customer.Email == SingletonCustomer.customer.Email && customer.PhoneNumber == SingletonCustomer.customer.PhoneNumber)
                         {
-                            Console.WriteLine($"{SingletonCustomer.customer.Name} was found in the list of customers");
                             // do something to make that person "logged in"
-                            Console.WriteLine($"   Please press enter to continue.");
+                            Console.WriteLine($"{SingletonCustomer.customer.Name} was found in the list of customers" +
+                                            "\n   Please press enter to continue.");
                             Console.ReadLine();
                             return MenuType.MainMenu;
                         }
-                        else
-                        {
-                            Console.WriteLine($"We couldn't find {SingletonCustomer.customer.Name}, please double check you have the correct information.");
-                            Console.WriteLine($"   Please press enter to continue.");
-                            Console.ReadLine();
-                            return MenuType.SearchForCustomer;
-                        }
                     }
-                    return MenuType.MainMenu;
+                    Console.WriteLine($"We couldn't find {SingletonCustomer.customer.Name}, please double check you have the correct information." +
+                                    "\n   Please press enter to continue.");
+                    Console.ReadLine();
+                    return MenuType.SearchForCustomer;
 
                 case "0":
                     return MenuType.MainMenu;
 
                 default:
-                    Console.WriteLine("Please input a valid response!");
-                    Console.WriteLine("Press Enter to continue");
+                    Console.WriteLine("Please input a valid response!" +
+                                    "\n   Pleas press enter to continue");
                     Console.ReadLine();
                     return MenuType.SearchForCustomer;
             }

@@ -14,8 +14,8 @@ namespace User_Interface
         }
         public void Menu()
         {
-            Console.WriteLine("Michigan Modular Locations");
-            Console.WriteLine("-------------------------");
+            Console.WriteLine("Michigan Modular Locations" + 
+                            "\n-------------------------");
             List<StoreFront> listOfStores = _storeFront.GetStoreFrontList();
             for (var i = 0; i < listOfStores.Count; i++)
             {
@@ -23,9 +23,9 @@ namespace User_Interface
                 Console.WriteLine(listOfStores[i]);
                 Console.WriteLine("-------------------------");
             }
-            Console.WriteLine("   [1] - Michigan Modular Mt Pleasant");
-            Console.WriteLine("   [2] - Michigan Modular Royal Oak");
-            Console.WriteLine("\n   [0] - Go back");
+            Console.WriteLine("   [1] - Michigan Modular Mt Pleasant"+
+                            "\n   [2] - Michigan Modular Royal Oak"+
+                            "\n   [0] - Go back");
         }
 
         public MenuType UserChoice()
@@ -35,14 +35,16 @@ namespace User_Interface
             {
 
                 case "1":
+                    SingletonCustomer.location = "Mt Pleasant";
                     return MenuType.ShowProductsMtP;
                 case "2":
+                    SingletonCustomer.location = "Royal Oak";
                     return MenuType.ShowProductsROak;
                 case "0":
                     return MenuType.MainMenu;
                 default:
-                    Console.WriteLine("Please input a valid response!");
-                    Console.WriteLine("Press Enter to continue");
+                    Console.WriteLine("Please input a valid response!"+
+                                    "\nPress Enter to continue");
                     Console.ReadLine();
                     return MenuType.MainMenu;
             }

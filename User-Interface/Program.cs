@@ -17,8 +17,13 @@ namespace User_Interface
                 Console.Clear();
                     // Store Manager ASCII Art
                 AscArt();
-                if (SingletonCustomer.customer.Name != null){
+                if (SingletonCustomer.customer.Name != null)
+                {
                     Console.WriteLine($"                               - Current Customer: {SingletonCustomer.customer.Name}");
+                }
+                if (SingletonCustomer.location != null)
+                {
+                    Console.WriteLine($"                               - Current Store Location: {SingletonCustomer.location}");
                 }
                 page.Menu();
                 MenuType currentPage = page.UserChoice();
@@ -43,14 +48,15 @@ namespace User_Interface
                         break;
                     case MenuType.ShowProductsMtP:
                         AscArt();
-                        page = new ShowProducts(new ProductsBL(new Repository()), "MtP");
+                        page = new ShowLineItems(new ProductsBL(new Repository()), "Mt Pleasant");
                         break;
                     case MenuType.ShowProductsROak:
                         AscArt();
-                        page = new ShowProducts(new ProductsBL(new Repository()), "ROak");
+                        page = new ShowLineItems(new ProductsBL(new Repository()), "Royal Oak");
                         break;
                     case MenuType.PlaceOrder:
                         AscArt();
+                        page = new PlaceOrder(new CustomerBL(new Repository()), new ProductsBL(new Repository()), SingletonCustomer.location);
                         break;
 
                     case MenuType.ViewOrderHistory:
@@ -68,12 +74,14 @@ namespace User_Interface
                     case MenuType.Exit:
                         stillOn = false;
                         AscArt();
-                        Console.WriteLine("Now Exiting, \nThank you for using the Store Manager!");
+                        Console.WriteLine("Now Exiting,"+
+                                        "\n   Thank you for using the Store Manager!");
                         break;
 
                     default:
                         AscArt();
-                        Console.WriteLine("Please select one of the options from the list provided. \nPress Enter to Continue");
+                        Console.WriteLine("Please select one of the options from the list provided. "+
+                                        "\n   Please press enter to Continue");
                         Console.ReadLine();
                         break;
                 }
