@@ -36,7 +36,7 @@ namespace User_Interface
                 case "1":
                     return MenuType.PlaceOrder;
                 case "0":
-                    return MenuType.MainMenu;
+                    return MenuType.ShowStoreFronts;
                 default:
                     Console.WriteLine("Please input a valid response!" + 
                                     "\nPress Enter to continue");

@@ -29,7 +29,7 @@ namespace User_Interface
                             "\n   [2] - Edit Address" +
                             "\n   [3] - Edit Email" +
                             "\n   [4] - Edit Phone Number" +
-                            "\n   [5] - Search Customer" +
+                            "\n   [5] - Login" +
                             "\n\n   [0] - Go Back");
         }
 
@@ -65,7 +65,7 @@ namespace User_Interface
                         if (customer.Name == SingletonCustomer.customer.Name && customer.Address == SingletonCustomer.customer.Address && customer.Email == SingletonCustomer.customer.Email && customer.PhoneNumber == SingletonCustomer.customer.PhoneNumber)
                         {
                             // do something to make that person "logged in"
-                            Console.WriteLine($"{SingletonCustomer.customer.Name} was found in the list of customers" +
+                            Console.WriteLine($"{SingletonCustomer.customer.Name} was found in the list of customers"+
                                             "\n   Please press enter to continue.");
                             Console.ReadLine();
                             return MenuType.MainMenu;
@@ -77,7 +77,7 @@ namespace User_Interface
                     return MenuType.SearchForCustomer;
 
                 case "0":
-                    return MenuType.MainMenu;
+                    return MenuType.StartMenu;
 
                 default:
                     Console.WriteLine("Please input a valid response!" +

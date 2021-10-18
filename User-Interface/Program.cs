@@ -11,7 +11,7 @@ namespace User_Interface
         {
             Boolean stillOn = true;
             
-            IMenu page = new MainMenu();
+            IMenu page = new StartMenu();
             while (stillOn)
             {
                 Console.Clear();
@@ -29,6 +29,10 @@ namespace User_Interface
                 MenuType currentPage = page.UserChoice();
                 switch (currentPage)
                 {
+                    case MenuType.StartMenu:
+                        AscArt();
+                        page = new StartMenu();
+                        break;
                     case MenuType.MainMenu:
                         AscArt();
                         page = new MainMenu();
@@ -42,7 +46,7 @@ namespace User_Interface
                         AscArt();
                         page = new SearchCustomers(new CustomerBL(new Repository()));
                         break;
-                    case MenuType.ViewStoreFrontInventory:
+                    case MenuType.ShowStoreFronts:
                         AscArt();
                         page = new ShowStoreFronts(new StoreFrontBL(new Repository()));
                         break;

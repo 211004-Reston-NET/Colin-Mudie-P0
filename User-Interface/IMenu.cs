@@ -2,11 +2,12 @@ namespace User_Interface
 {
     public enum MenuType
     {   
+        StartMenu,
         MainMenu,
         AddCustomer,
         ShowCustomers,
         SearchForCustomer,
-        ViewStoreFrontInventory,
+        ShowStoreFronts,
         ShowProductsMtP,
         ShowProductsROak,
         PlaceOrder,

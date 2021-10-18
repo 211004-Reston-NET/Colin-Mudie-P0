@@ -19,11 +19,12 @@ namespace User_Interface
             List<StoreFront> listOfStores = _storeFront.GetStoreFrontList();
             for (var i = 0; i < listOfStores.Count; i++)
             {
-                Console.WriteLine(i + 1);
-                Console.WriteLine(listOfStores[i]);
-                Console.WriteLine("-------------------------");
+                Console.WriteLine($"{i + 1}"+
+                                $" \n{listOfStores[i]}"+
+                                "\n-------------------------");
             }
-            Console.WriteLine("   [1] - Michigan Modular Mt Pleasant"+
+            Console.WriteLine("Please Select a Store to view."+
+                            "\n   [1] - Michigan Modular Mt Pleasant"+
                             "\n   [2] - Michigan Modular Royal Oak"+
                             "\n   [0] - Go back");
         }

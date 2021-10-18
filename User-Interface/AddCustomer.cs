@@ -1,7 +1,5 @@
 using System;
-using System.Text.RegularExpressions;
 using Business_Logic;
-using Models;
 
 namespace User_Interface
 {
@@ -15,19 +13,19 @@ namespace User_Interface
         }
         public void Menu()
         {
-            Console.WriteLine("Adding a new Customer");
-            Console.WriteLine("-------------------------");
-            Console.WriteLine("Name - " + SingletonCustomer.customer.Name);
-            Console.WriteLine("Address - " + SingletonCustomer.customer.Address);
-            Console.WriteLine("Email - " + SingletonCustomer.customer.Email);
-            Console.WriteLine("Phone - " + SingletonCustomer.customer.PhoneNumber);
-            Console.WriteLine("-------------------------");
-            Console.WriteLine("   [1] - Edit Name");
-            Console.WriteLine("   [2] - Edit Address");
-            Console.WriteLine("   [3] - Edit Email");
-            Console.WriteLine("   [4] - Edit Phone Number");
-            Console.WriteLine("   [5] - Save Customer");
-            Console.WriteLine("\n   [0] - Go Back");
+            Console.WriteLine("Creating a new Account"+
+                            "\n-------------------------"+
+                            $" \nName - {SingletonCustomer.customer.Name}"+
+                            $" \nAddress - {SingletonCustomer.customer.Address}"+
+                            $" \nEmail - {SingletonCustomer.customer.Email}"+
+                            $" \nPhone - {SingletonCustomer.customer.PhoneNumber}"+
+                            "  \n-------------------------"+
+                            "\n   [1] - Edit Name"+
+                            "\n   [2] - Edit Address"+
+                            "\n   [3] - Edit Email"+
+                            "\n   [4] - Edit Phone Number"+
+                            "\n   [5] - Save Account Details"+
+                            "\n\n   [0] - Go Back");
         }
         public MenuType UserChoice()
         {
@@ -61,8 +59,8 @@ namespace User_Interface
                     }
                     catch (System.Exception)
                     {
-                        Console.WriteLine("You must input value to all fields above");
-                        Console.WriteLine("Press Enter to continue");
+                        Console.WriteLine("You must input value to all fields above"+
+                                        "\nPress Enter to continue");
                         Console.ReadLine();
                         return MenuType.AddCustomer;
                     }
@@ -71,11 +69,11 @@ namespace User_Interface
                     return MenuType.MainMenu;
 
                 case "0":
-                    return MenuType.MainMenu;
+                    return MenuType.StartMenu;
 
                 default:
-                    Console.WriteLine("Please input a valid response!");
-                    Console.WriteLine("Press Enter to continue");
+                    Console.WriteLine("Please input a valid response!"+
+                                    "\nPress Enter to continue");
                     Console.ReadLine();
                     return MenuType.AddCustomer;
             }
