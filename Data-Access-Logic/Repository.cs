@@ -56,14 +56,12 @@ namespace Data_Access_Logic
             List<Customer> listOfCustomers = GetCustomerList();
             foreach (Customer customer in listOfCustomers)
             {
-                Console.WriteLine(customer);
                 if (customer.Name == p_customer.Name && 
                     customer.Address == p_customer.Address && 
                     customer.Email == p_customer.Email && 
                     customer.PhoneNumber == p_customer.PhoneNumber)
                 {
                     customer.Orders.Add(p_order);
-                    Console.WriteLine(customer.Orders);
                     _jsonString = JsonSerializer.Serialize(listOfCustomers, new JsonSerializerOptions { WriteIndented = true });
                     File.WriteAllText(_filepath + "Customer.json", _jsonString);
                 }

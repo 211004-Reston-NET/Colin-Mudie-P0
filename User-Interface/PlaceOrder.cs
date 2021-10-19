@@ -25,9 +25,10 @@ namespace User_Interface
                 Console.WriteLine("-------------------------" +
                                 $" \nBrand: {prod.Product.Brand}" +
                                 $" \nName: {prod.Product.Name}" +
-                                $" \nQuantity: {prod.Quantity}");
+                                $" \nPrice: {prod.Product.Price}" +
+                                $" \nStock Left: {prod.Quantity}");
             }
-            Console.WriteLine("_________________________" +
+            Console.WriteLine("\n_________________________" +
                             "\n      Shopping Cart" +
                             "\n-------------------------");
             if (SingletonCustomer.orders.LineItems.Count == 0)
@@ -37,9 +38,9 @@ namespace User_Interface
             }
             foreach (LineItems item in SingletonCustomer.orders.LineItems)
             {
-                Console.WriteLine($"   {item.Product.Name} "+
+                Console.WriteLine($"   {item.Product.Name} " +
                                 $" \n   Quantity: {item.Quantity} " +
-                                $" \n   Price: {item.Product.Price}"+
+                                $" \n   Price: {item.Product.Price}" +
                                 "\n-------------------------");
             }
             Console.WriteLine($"Store Location: {SingletonCustomer.location}" +
@@ -58,13 +59,14 @@ namespace User_Interface
             {
                 case "1":
                     Console.WriteLine("   Please Type the name of the product you would like to add.");
-                    string _inputName = Console.ReadLine().Trim();
+                    string _inputName = Console.ReadLine().Trim().ToLower();
                     foreach (LineItems prod in listOfLineItems)
                     {
-                        if (_inputName == prod.Product.Name)
+                        if (_inputName == prod.Product.Name.ToLower())
                         {
                             Console.WriteLine($"   How many {_inputName} module's would you like to add?");
-                            int _inputQuantity = int.Parse(Console.ReadLine());
+                            int _inputQuantity = int.Parse(Console.ReadLine().Trim());
+                            prod.Quantity = _inputQuantity;
                             SingletonCustomer.orders.LineItems.Add(prod);
                             SingletonCustomer.orders.TotalPrice = SingletonCustomer.orders.TotalPrice + (_inputQuantity * prod.Product.Price);
                             if (_inputQuantity <= 0)
@@ -75,8 +77,8 @@ namespace User_Interface
                                 return MenuType.PlaceOrder;
                             }
                             else if (_inputQuantity == 1)
-                            {   
-                                
+                            {
+
                                 Console.WriteLine($"   {_inputQuantity} {_inputName} module has been added to the Shopping Cart" +
                                                 "\n   Press Enter to continue");
                                 Console.ReadLine();

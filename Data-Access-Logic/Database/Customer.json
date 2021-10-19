@@ -1,6 +1,6 @@
 [
   {
-    "Name": "Colin",
+    "Name": "colin",
     "Address": "123 Main St",
     "Email": "colin@example.com",
     "PhoneNumber": "123-123-1234",
@@ -9,27 +9,43 @@
         "LineItems": [
           {
             "Product": {
-              "Name": "Maths",
-              "Price": 290.00,
-              "Description": "Make Noise Maths is a Control Voltage Generator and Processor indebted to the classic designs of Don Buchla in his Model 257 and Model 281 function generators.\n   The design of Buchla\u0027s envelopes allowed them to easily switch between cycling and triggered envelopes, providing LFOs as well, and at high enough speeds, Oscillators. \n   This design was then appropriated for the Serge Dual Universal Slope Generator,\n   which is an apt name as it can basically create any kind of rising and falling voltage. \n   Maths continues in this great tradition of versatile and function-packed modules.",
-              "Brand": "Make Noise",
-              "Category": "Envelope Generator"
+              "Name": "Mimetic Digitalis",
+              "Price": 265.00,
+              "Description": "Mimetic Digitalis is a powerful multi-channel CV sequencer from Noise Engineering that comes in compact 10 HP size.\n   The module features 4 CV outputs and a single trigger output. While trigger signals are output every time the sequencer advances a step,\n   the 3 CV outputs can be influenced and manipulated via the external voltage sources or simply dialed-in using the encoder.\n   Up to 16 CV patterns can be saved and stored in the sequencer\u2019s memory. Zero and Shred buttons allow for fast zeroing and randomization of step values respectively.\n   Collectively, the set of features makes Mimetic Digitalis a great tool for the creation of both precise and chaotic CV sequences.",
+              "Brand": "Noise Engineering",
+              "Category": "Sequencer"
             },
-            "Quantity": 3
+            "Quantity": 1
           },
           {
             "Product": {
-              "Name": "Akemie\u0027s Castle",
-              "Price": 599.00,
-              "Description": "The ALM Busy Circuits Akemie\u2019s Castle is a dual VCO that utilizes Yamaha IC\u2019s to achieve 4 Operator digital FM.\n   Each of the module\u2019s operators features independent waveform sections,\n   a frequency multiplier, and both manual and remote level controls.\n   Each of the operators can be combined in various ways across the oscillator sections, which can be further combined with independent feedback control settings on each VCO.\n   All of this combined produces an incredibly wide range of available sounds.",
-              "Brand": "ALM Busy Circuits",
+              "Name": "Maths",
+              "Price": 290.00,
+              "Description": "Make Noise Maths is a Control Voltage Generator and Processor indebted to the classic designs of Don Buchla in his Model 257 and Model 281 function generators. \n   The design of Buchla\u0027s envelopes allowed them to easily switch between cycling and triggered envelopes, providing LFOs as well, and at high enough speeds, Oscillators. \n   This design was then appropriated for the Serge Dual Universal Slope Generator,\n   which is an apt name as it can basically create any kind of rising and falling voltage. \n   Maths continues in this great tradition of versatile and function-packed modules.",
+              "Brand": "Make Noise",
+              "Category": "Envelope Generator"
+            },
+            "Quantity": 1
+          }
+        ],
+        "Address": "332 Leafdale Blvd, Royal Oak, MI 48073",
+        "TotalPrice": 555.00
+      },
+      {
+        "LineItems": [
+          {
+            "Product": {
+              "Name": "Basimilus Iteritas Alter",
+              "Price": 365.00,
+              "Description": "The Noise Engineering Basimilus Iteritas alter is one of the most lauded modules in Eurorack:\n   one of the most flexible single devices for the creation of percussion and synth sounds.\n   The BIA is essentially a complex drum voice created from six oscillators and a noise source, complete with voltage control of every parameter.\n   This legendary module has been revamped with a stylish new black panel.",
+              "Brand": "Noise Engineering",
               "Category": "Oscillator"
             },
             "Quantity": 1
           }
         ],
-        "Address": null,
-        "TotalPrice": 1179.00
+        "Address": "332 Leafdale Blvd, Royal Oak, MI 48073",
+        "TotalPrice": 365.00
       }
     ]
   },

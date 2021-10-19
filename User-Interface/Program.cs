@@ -2,6 +2,7 @@
 using Models;
 using Business_Logic;
 using Data_Access_Logic;
+using System.Globalization;
 
 namespace User_Interface
 {
@@ -10,7 +11,6 @@ namespace User_Interface
         static void Main(string[] args)
         {
             Boolean stillOn = true;
-            
             IMenu page = new StartMenu();
             while (stillOn)
             {
@@ -19,7 +19,8 @@ namespace User_Interface
                 AscArt();
                 if (SingletonCustomer.customer.Name != null)
                 {
-                    Console.WriteLine($"                               - Current Customer: {SingletonCustomer.customer.Name}");
+                    TextInfo myTI = new CultureInfo("en-US", false).TextInfo;
+                    Console.WriteLine($"                               - Current Customer: {myTI.ToTitleCase(SingletonCustomer.customer.Name)}");
                 }
                 if (SingletonCustomer.location != null)
                 {
@@ -100,6 +101,7 @@ namespace User_Interface
             "\n / /  / // // /__ / / / // // /_/ // /_/ // / / /  / /  / // /_/ // /_/ // /_/ // // /_/ // /    " +
             "\n/_/  /_//_/ \\___//_/ /_//_/ \\__, / \\__,_//_/ /_/  /_/  /_/ \\____/ \\__,_/ \\__,_//_/ \\__,_//_/     " +
             "\n                           /____/                                                                ");
+            
         }
     }
 }

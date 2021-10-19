@@ -37,9 +37,11 @@ namespace User_Interface
 
                 case "1":
                     SingletonCustomer.location = "Mt Pleasant";
+                    SingletonCustomer.orders.Address = "5240 Mission St, Mt Pleasant, MI 48858";
                     return MenuType.ShowProductsMtP;
                 case "2":
                     SingletonCustomer.location = "Royal Oak";
+                    SingletonCustomer.orders.Address = "332 Leafdale Blvd, Royal Oak, MI 48073";
                     return MenuType.ShowProductsROak;
                 case "0":
                     return MenuType.MainMenu;
