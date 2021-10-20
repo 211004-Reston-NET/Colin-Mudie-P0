@@ -21,6 +21,12 @@ namespace Data_Access_Logic
             return p_customer;
         }
 
+        public List<Products> GetAllProducts()
+        {
+            _jsonString = File.ReadAllText(_filepath+"Products.json");
+            return JsonSerializer.Deserialize<List<Products>>(_jsonString);
+        }
+
         public List<Customer> GetCustomerList()
         {
             _jsonString = File.ReadAllText(_filepath+"Customer.json");

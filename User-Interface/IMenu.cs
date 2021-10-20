@@ -10,6 +10,7 @@ namespace User_Interface
         ShowStoreFronts,
         ShowProductsMtP,
         ShowProductsROak,
+        SearchByCategory,
         PlaceOrder,
         ViewOrderHistory,
         ReplenishInventory,

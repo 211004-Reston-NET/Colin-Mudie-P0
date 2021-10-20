@@ -38,5 +38,11 @@ namespace Data_Access_Logic
         /// <param name="p_order"> The Order that will be added to the list of Orders on our p_customer </param>
         /// <returns> Will return the Order that was placed. </returns>
         Orders PlaceOrder(Customer p_customer, Orders p_order);
+
+        /// <summary>
+        ///     This will grab the current list of products from db.
+        /// </summary>
+        /// <returns> Will return a list of products </returns>
+        List<Products> GetAllProducts();
     }
 }

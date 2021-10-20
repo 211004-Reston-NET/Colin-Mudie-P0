@@ -14,7 +14,6 @@ namespace User_Interface
             IMenu page = new StartMenu();
             while (stillOn)
             {
-                Console.Clear();
                     // Store Manager ASCII Art
                 AscArt();
                 if (SingletonCustomer.customer.Name != null)
@@ -31,48 +30,48 @@ namespace User_Interface
                 switch (currentPage)
                 {
                     case MenuType.StartMenu:
-                        AscArt();
                         page = new StartMenu();
                         break;
+
                     case MenuType.MainMenu:
-                        AscArt();
                         page = new MainMenu();
                         break;
 
-                    case MenuType.AddCustomer:
-                        AscArt();                        
+                    case MenuType.AddCustomer:                        
                         page = new AddCustomer(new CustomerBL(new Repository()));
                         break;
+
                     case MenuType.SearchForCustomer:
-                        AscArt();
                         page = new SearchCustomers(new CustomerBL(new Repository()));
                         break;
+
                     case MenuType.ShowStoreFronts:
-                        AscArt();
                         page = new ShowStoreFronts(new StoreFrontBL(new Repository()));
                         break;
+
                     case MenuType.ShowProductsMtP:
-                        AscArt();
                         page = new ShowLineItems(new LineItemsBL(new Repository()), "Mt Pleasant");
                         break;
+
                     case MenuType.ShowProductsROak:
-                        AscArt();
                         page = new ShowLineItems(new LineItemsBL(new Repository()), "Royal Oak");
                         break;
+
+                    case MenuType.SearchByCategory:
+                        page = new SearchByCategory(new ProductBL(new Repository()));
+                        break;
+                        
                     case MenuType.PlaceOrder:
-                        AscArt();
                         page = new PlaceOrder(new CustomerBL(new Repository()), new LineItemsBL(new Repository()), SingletonCustomer.location);
                         break;
 
                     case MenuType.ViewOrderHistory:
-                        AscArt();
                         break;
 
                     case MenuType.ReplenishInventory:
-                        AscArt();
                         break;
+                        
                     case MenuType.ShowCustomers:
-                        AscArt();
                         page = new ShowCustomers(new CustomerBL(new Repository()));
                         break;
 

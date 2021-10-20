@@ -11,10 +11,11 @@ namespace User_Interface
             "\n   [1]: Create New Account" +
             "\n   [2]: Login" +
             "\n   [3]: View Store Fronts" +
-            "\n   [4]: Place Order" +
-            "\n   [5]: View Order History" +
-            "\n   [6]: Replenish Inventory" +
-            "\n   [7]: View Products" +
+            "\n   [4]: Search Products by Category" +
+            "\n   [5]: Place Order" +
+            "\n   [6]: View Order History" +
+            "\n   [7]: Replenish Inventory" +
+            "\n   [8]: View Products" +
             "\n\n   [0]: Exit");
         }
 
@@ -30,18 +31,20 @@ namespace User_Interface
                 case "3":
                     return MenuType.ShowStoreFronts;
                 case "4":
+                    return MenuType.SearchByCategory;
+                case "5":
                     return MenuType.PlaceOrder;
-                case "5": 
-                    return MenuType.ViewOrderHistory;
                 case "6": 
+                    return MenuType.ViewOrderHistory;
+                case "7": 
                     return MenuType.ReplenishInventory;
-                case "0": 
-                    return MenuType.Exit;
-                case "7":
+                case "8":
                     return MenuType.ShowProductsMtP;
                 case "9":
                 // used for testing delete before production.
                     return MenuType.ShowCustomers;
+                case "0":
+                    return MenuType.Exit;
                 default:
                     Console.WriteLine("   Please select one of the options from the list provided. "+
                                     "\n   Please press enter to Continue");
