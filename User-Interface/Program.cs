@@ -10,7 +10,7 @@ namespace User_Interface
     {
         static void Main(string[] args)
         {
-            Boolean stillOn = true;
+            bool stillOn = true;
             IMenu page = new StartMenu();
             while (stillOn)
             {

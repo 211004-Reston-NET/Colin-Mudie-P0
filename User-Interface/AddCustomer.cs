@@ -14,12 +14,11 @@ namespace User_Interface
         }
         public void Menu()
         {
-            TextInfo myTI = new CultureInfo("en-US", false).TextInfo;
             Console.WriteLine("Creating a new Account"+
                             "\n-------------------------"+
-                            $" \nName - {myTI.ToTitleCase(SingletonCustomer.customer.Name)}"+
-                            $" \nAddress - {myTI.ToTitleCase(SingletonCustomer.customer.Address)}"+
-                            $" \nEmail - {myTI.ToTitleCase(SingletonCustomer.customer.Email)}"+
+                            $" \nName - {SingletonCustomer.customer.Name}"+
+                            $" \nAddress - {SingletonCustomer.customer.Address}"+
+                            $" \nEmail - {SingletonCustomer.customer.Email}"+
                             $" \nPhone - {SingletonCustomer.customer.PhoneNumber}"+
                             "  \n-------------------------"+
                             "\n   [1] - Edit Name"+
@@ -31,7 +30,6 @@ namespace User_Interface
         }
         public MenuType UserChoice()
         {
-            TextInfo myTI = new CultureInfo("en-US", false).TextInfo;
             string userChoice = Console.ReadLine();
             switch (userChoice)
             {
@@ -67,7 +65,7 @@ namespace User_Interface
                         Console.ReadLine();
                         return MenuType.AddCustomer;
                     }
-                    Console.WriteLine($"{myTI.ToTitleCase(SingletonCustomer.customer.Name)} has been added to our list of customers. \n   Please press enter to continue.");
+                    Console.WriteLine($"{SingletonCustomer.customer.Name} has been added to our list of customers. \n   Please press enter to continue.");
                     Console.ReadLine();
                     return MenuType.MainMenu;
 
