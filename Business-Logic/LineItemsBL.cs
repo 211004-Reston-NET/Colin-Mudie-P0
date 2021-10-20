@@ -4,10 +4,10 @@ using Models;
 
 namespace Business_Logic
 {
-    public class ProductsBL : IProductsBL
+    public class LineItemsBL : ILineItemsBL
     {
         private Repository _repo;
-        public ProductsBL(Repository p_repo)
+        public LineItemsBL(Repository p_repo)
         {
             _repo = p_repo;
         }

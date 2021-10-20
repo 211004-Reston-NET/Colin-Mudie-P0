@@ -3,7 +3,7 @@ using Models;
 
 namespace Business_Logic
 {
-    public interface IProductsBL
+    public interface ILineItemsBL
     {
         /// <summary>
         /// This will return a list of Products stored in the db.

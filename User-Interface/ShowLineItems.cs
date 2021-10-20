@@ -7,9 +7,9 @@ namespace User_Interface
 {
     public class ShowLineItems : IMenu
     {
-        private IProductsBL _lineItems;
+        private ILineItemsBL _lineItems;
         private string _store;
-        public ShowLineItems(IProductsBL p_lineItems, string p_store)
+        public ShowLineItems(ILineItemsBL p_lineItems, string p_store)
         {
             _lineItems = p_lineItems;
             _store = p_store;
@@ -22,6 +22,7 @@ namespace User_Interface
             foreach (LineItems prod in listOfLineItems)
             {
                 Console.WriteLine(prod);
+                
                 Console.WriteLine("-------------------------");
             }
             Console.WriteLine("   [1] - Place an Order" + 

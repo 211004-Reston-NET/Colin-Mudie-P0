@@ -7,10 +7,10 @@ namespace User_Interface
 {
     public class PlaceOrder : IMenu
     {
-        private IProductsBL _lineItems;
+        private ILineItemsBL _lineItems;
         private string _store;
         private ICustomerBL _customerBL;
-        public PlaceOrder(ICustomerBL p_customerBL, IProductsBL p_lineItems, string p_store)
+        public PlaceOrder(ICustomerBL p_customerBL, ILineItemsBL p_lineItems, string p_store)
         {
             _customerBL = p_customerBL;
             _lineItems = p_lineItems;

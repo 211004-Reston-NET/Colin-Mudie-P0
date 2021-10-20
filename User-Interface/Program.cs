@@ -53,15 +53,15 @@ namespace User_Interface
                         break;
                     case MenuType.ShowProductsMtP:
                         AscArt();
-                        page = new ShowLineItems(new ProductsBL(new Repository()), "Mt Pleasant");
+                        page = new ShowLineItems(new LineItemsBL(new Repository()), "Mt Pleasant");
                         break;
                     case MenuType.ShowProductsROak:
                         AscArt();
-                        page = new ShowLineItems(new ProductsBL(new Repository()), "Royal Oak");
+                        page = new ShowLineItems(new LineItemsBL(new Repository()), "Royal Oak");
                         break;
                     case MenuType.PlaceOrder:
                         AscArt();
-                        page = new PlaceOrder(new CustomerBL(new Repository()), new ProductsBL(new Repository()), SingletonCustomer.location);
+                        page = new PlaceOrder(new CustomerBL(new Repository()), new LineItemsBL(new Repository()), SingletonCustomer.location);
                         break;
 
                     case MenuType.ViewOrderHistory:
