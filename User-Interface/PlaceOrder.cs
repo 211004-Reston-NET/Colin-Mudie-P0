@@ -7,6 +7,7 @@ namespace User_Interface
 {
     public class PlaceOrder : IMenu
     {
+        private static bool _loaded = false;
         private ILineItemsBL _lineItems;
         private string _store;
         private ICustomerBL _customerBL;
@@ -18,8 +19,12 @@ namespace User_Interface
         }
         public void Menu()
         {
+        
+                List<LineItems> listOfLineItems = _lineItems.GetLineItemsList(_store);
+            
+            
             Console.WriteLine($"Current List of Products from {SingletonCustomer.location}");
-            List<LineItems> listOfLineItems = _lineItems.GetLineItemsList(_store);
+            
             foreach (LineItems prod in listOfLineItems)
             {
                 Console.WriteLine("-------------------------" +
@@ -60,13 +65,18 @@ namespace User_Interface
                 case "1":
                     Console.WriteLine("   Please Type the name of the product you would like to add.");
                     string _inputName = Console.ReadLine().Trim().ToLower();
+                
                     foreach (LineItems prod in listOfLineItems)
                     {
+                        Console.WriteLine(prod);
                         if (_inputName == prod.Product.Name.ToLower())
                         {
                             Console.WriteLine($"   How many {_inputName} module's would you like to add?");
                             int _inputQuantity = int.Parse(Console.ReadLine().Trim());
-                            prod.Quantity = _inputQuantity;
+                            LineItems tempProduct = prod;
+                            _lineItems.ChangeLineItemsQuantity(tempProduct, _store);
+
+                            prod.Quantity =_inputQuantity;
                             SingletonCustomer.orders.LineItems.Add(prod);
                             SingletonCustomer.orders.TotalPrice = SingletonCustomer.orders.TotalPrice + (_inputQuantity * prod.Product.Price);
                             if (_inputQuantity <= 0)

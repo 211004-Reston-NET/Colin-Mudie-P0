@@ -12,6 +12,14 @@ namespace Data_Access_Logic
         Customer AddCustomer(Customer p_customer);
 
         /// <summary>
+        /// updates the LineItems with the new list of LineItems to update quantities.
+        /// </summary>
+        /// <param name="p_lineItems"> the LineItem that will be changed, contains new quantity value. </param>
+        /// <param name="p_location"> the location so we know which list of lineItems to look for. </param>
+        /// <returns> returns the updated list of LineItems. </returns>
+        List<LineItems> ChangeLineItemsQuantity(List<LineItems> p_lineItems, string p_location);
+
+        /// <summary>
         /// This will return a list of Customers stored in the database
         /// </summary>
         /// <returns> will return a list of Customers</returns>

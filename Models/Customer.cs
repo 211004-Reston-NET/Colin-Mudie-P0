@@ -8,6 +8,7 @@ namespace Models
     // the data concerning a customer.
     {
         private string _name;
+
         private string _address;
         private string _email;
         private string _phoneNumber;
@@ -24,7 +25,7 @@ namespace Models
                 }
                 _name = value;
             }
-            
+
         }
 
         public string Address
@@ -56,7 +57,7 @@ namespace Models
         public string PhoneNumber
         {
             get { return _phoneNumber; }
-            set 
+            set
             {
                 if (!Regex.IsMatch(value, @"^\(?([0-9]{3})\)?[-.●]?([0-9]{3})[-.●]?([0-9]{4})$"))
                 {

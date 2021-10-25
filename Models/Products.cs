@@ -3,11 +3,8 @@ using System;
 namespace Models
 {
     public class Products
-    // The product model is supposed to hold
-    // the data concerning a customer.
     {
         private string _name;
-        //when implemented with SQL DB change String to Decimal for price
         private decimal _price;
         private string _description;
         private string _brand;

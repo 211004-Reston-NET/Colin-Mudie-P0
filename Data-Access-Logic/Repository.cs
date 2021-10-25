@@ -15,10 +15,28 @@ namespace Data_Access_Logic
         {
             List<Customer> listOfCustomers = GetCustomerList();
             listOfCustomers.Add(p_customer);
-            _jsonString = JsonSerializer.Serialize(listOfCustomers, new JsonSerializerOptions{WriteIndented = true});
+            _jsonString = JsonSerializer.Serialize(listOfCustomers, new JsonSerializerOptions { WriteIndented = true});
 
             File.WriteAllText(_filepath+"Customer.json", _jsonString);
             return p_customer;
+        }
+
+        public List<LineItems> ChangeLineItemsQuantity(List<LineItems> p_lineItems, string p_location)
+        {
+            _jsonString = JsonSerializer.Serialize(p_lineItems, new JsonSerializerOptions { WriteIndented = true });
+            switch (p_location)
+            {
+                case "Royal Oak":
+                    File.WriteAllText(_filepath + "RoyalOakProducts.json", _jsonString);
+                    break;
+                case "Mt Pleasant":
+                    File.WriteAllText(_filepath + "MtPleasantProducts.json", _jsonString);
+                    break;
+                default:
+                    File.WriteAllText(_filepath + "MtPleasantProducts.json", _jsonString);
+                    break;
+            }
+    return p_lineItems;
         }
 
         public List<Products> GetAllProducts()
