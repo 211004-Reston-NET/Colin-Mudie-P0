@@ -11,15 +11,15 @@ namespace User_Interface
         static void Main(string[] args)
         {
             bool stillOn = true;
-            IMenu page = new StartMenu();
+            IFactory factory = new MenuFactory();
+            IMenu page = factory.GetMenu(MenuType.StartMenu);
             while (stillOn)
             {
                     // Store Manager ASCII Art
                 AscArt();
                 if (SingletonCustomer.customer.Name != null)
                 {
-                    TextInfo myTI = new CultureInfo("en-US", false).TextInfo;
-                    Console.WriteLine($"                               - Current Customer: {myTI.ToTitleCase(SingletonCustomer.customer.Name)}");
+                    Console.WriteLine($"                               - Current Customer: {SingletonCustomer.customer.Name}");
                 }
                 if (SingletonCustomer.location != null)
                 {
@@ -27,67 +27,16 @@ namespace User_Interface
                 }
                 page.Menu();
                 MenuType currentPage = page.UserChoice();
-                switch (currentPage)
+                if (currentPage == MenuType.Exit)
                 {
-                    case MenuType.StartMenu:
-                        page = new StartMenu();
-                        break;
-
-                    case MenuType.MainMenu:
-                        page = new MainMenu();
-                        break;
-
-                    case MenuType.AddCustomer:                        
-                        page = new AddCustomer(new CustomerBL(new Repository()));
-                        break;
-
-                    case MenuType.SearchForCustomer:
-                        page = new SearchCustomers(new CustomerBL(new Repository()));
-                        break;
-
-                    case MenuType.ShowStoreFronts:
-                        page = new ShowStoreFronts(new StoreFrontBL(new Repository()));
-                        break;
-
-                    case MenuType.ShowProductsMtP:
-                        page = new ShowLineItems(new LineItemsBL(new Repository()), "Mt Pleasant");
-                        break;
-
-                    case MenuType.ShowProductsROak:
-                        page = new ShowLineItems(new LineItemsBL(new Repository()), "Royal Oak");
-                        break;
-
-                    case MenuType.SearchByCategory:
-                        page = new SearchByCategory(new ProductBL(new Repository()));
-                        break;
-                        
-                    case MenuType.PlaceOrder:
-                        page = new PlaceOrder(new CustomerBL(new Repository()), new LineItemsBL(new Repository()), SingletonCustomer.location);
-                        break;
-
-                    case MenuType.ViewOrderHistory:
-                        break;
-
-                    case MenuType.ReplenishInventory:
-                        break;
-                        
-                    case MenuType.ShowCustomers:
-                        page = new ShowCustomers(new CustomerBL(new Repository()));
-                        break;
-
-                    case MenuType.Exit:
-                        stillOn = false;
-                        AscArt();
-                        Console.WriteLine("Now Exiting,"+
-                                        "\n   Thank you for using the Store Manager!");
-                        break;
-
-                    default:
-                        AscArt();
-                        Console.WriteLine("Please select one of the options from the list provided. "+
-                                        "\n   Please press enter to Continue");
-                        Console.ReadLine();
-                        break;
+                    stillOn = false;
+                    AscArt();
+                    Console.WriteLine("Now Exiting," +
+                                    "\n   Thank you for using the Store Manager!");
+                }
+                else
+                {
+                    page = factory.GetMenu(currentPage);
                 }
             }
         }

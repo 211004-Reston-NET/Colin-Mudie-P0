@@ -18,11 +18,10 @@ namespace User_Interface
         {
             Console.WriteLine($"Current List of Products from {SingletonCustomer.location}" + 
                             "\n-------------------------");
-            List<LineItems> listOfLineItems = _lineItems.GetLineItemsList(_store);
+            List<LineItems> listOfLineItems = _lineItems.GetLineItems(_store);
             foreach (LineItems prod in listOfLineItems)
             {
                 Console.WriteLine(prod);
-                
                 Console.WriteLine("-------------------------");
             }
             Console.WriteLine("   [1] - Place an Order" + 

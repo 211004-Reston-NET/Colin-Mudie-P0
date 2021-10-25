@@ -7,7 +7,6 @@ namespace User_Interface
 {
     public class PlaceOrder : IMenu
     {
-        private static bool _loaded = false;
         private ILineItemsBL _lineItems;
         private string _store;
         private ICustomerBL _customerBL;
@@ -20,7 +19,7 @@ namespace User_Interface
         public void Menu()
         {
         
-                List<LineItems> listOfLineItems = _lineItems.GetLineItemsList(_store);
+                List<LineItems> listOfLineItems = _lineItems.GetLineItems(_store);
             
             
             Console.WriteLine($"Current List of Products from {SingletonCustomer.location}");
@@ -58,7 +57,7 @@ namespace User_Interface
 
         public MenuType UserChoice()
         {
-            List<LineItems> listOfLineItems = _lineItems.GetLineItemsList(_store);
+            List<LineItems> listOfLineItems = _lineItems.GetLineItems(_store);
             string userChoice = Console.ReadLine();
             switch (userChoice)
             {

@@ -10,7 +10,7 @@ namespace Business_Logic
         /// </summary>
         /// <param name="p_location"> the parameter passed in will be the stores location, in order to determine which product list to use.</param>
         /// <returns>It will return a list of Products.</returns>
-        List<LineItems> GetLineItemsList(string p_location);
+        List<LineItems> GetLineItems(string p_location);
 
         /// <summary>
         /// Gets all lineItems from the correct store location, then checks it for the LineItem p_lineItem and updates the listofLineItems.

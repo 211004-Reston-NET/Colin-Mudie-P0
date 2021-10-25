@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using Data_Access_Logic;
@@ -9,6 +8,7 @@ namespace Business_Logic
     public class LineItemsBL : ILineItemsBL
     {
         private Repository _repo;
+
         public LineItemsBL(Repository p_repo)
         {
             _repo = p_repo;
@@ -32,7 +32,7 @@ namespace Business_Logic
             return listOfLineItems;
         }
 
-        public List<LineItems> GetLineItemsList(string p_location)
+        public List<LineItems> GetLineItems(string p_location)
         {
             return _repo.GetLineItemsList(p_location);
         }
