@@ -9,6 +9,7 @@ namespace Models
         private string _description;
         private string _brand;
         private string _category;
+        public int ProductId { get; set; }
 
         public string Name {
             get

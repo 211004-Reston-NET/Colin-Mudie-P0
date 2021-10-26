@@ -1,5 +1,9 @@
+using System.IO;
 using Business_Logic;
 using Data_Access_Logic;
+using Data_Access_Logic.Entities;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 
 namespace User_Interface
 {
@@ -7,6 +11,14 @@ namespace User_Interface
     {
         public IMenu GetMenu(MenuType p_menu)
         {
+            var configuration = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsetting.json")
+                .Build();
+            DbContextOptions<MMDBContext> options = new DbContextOptionsBuilder<MMDBContext>()
+                .UseSqlServer(configuration.GetConnectionString("MMDB"))
+                .Options;
+
             switch (p_menu)
             {
                 case MenuType.StartMenu:

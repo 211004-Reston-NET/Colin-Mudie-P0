@@ -13,6 +13,7 @@ namespace Models
         private string _email;
         private string _phoneNumber;
         private List<Orders> _orders = new List<Orders>();
+        public int CustomerId { get; set; }
 
         public string Name
         {

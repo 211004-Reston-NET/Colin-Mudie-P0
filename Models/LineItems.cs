@@ -6,7 +6,9 @@ namespace Models
     {
         private Products _product;
         private int _quantity;
-
+        public int LineItemId { get; set; }
+        public int ProductId { get; set; }
+        public int StoreFrontId { get; set; }
         public Products Product 
         { 
             get

@@ -9,6 +9,7 @@ namespace Models
         private List<LineItems> _lineItems = new List<LineItems>();
         private string _address;
         private decimal _totalPrice;
+        public int OrderId { get; set; }
 
         public List<LineItems> LineItems
         {

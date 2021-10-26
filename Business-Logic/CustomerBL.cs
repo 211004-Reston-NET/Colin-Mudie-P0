@@ -8,9 +8,9 @@ namespace Business_Logic
 {
     public class CustomerBL : ICustomerBL
     {
-        private Repository _repo;
+        private IRepository _repo;
         
-        public CustomerBL(Repository p_repo)
+        public CustomerBL(IRepository p_repo)
         {
             _repo = p_repo;
         }

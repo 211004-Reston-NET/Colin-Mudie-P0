@@ -8,7 +8,7 @@ namespace Models
     {
         private string _name;
         private string _address;
-        private List<Products> _products;
+        private List<LineItems> _lineItems;
         private List<Orders> _orders;
 
         //properties
@@ -33,15 +33,15 @@ namespace Models
                 _address = value;
             }
         }
-        public List<Products> Products
+        public List<LineItems> LineItems
         {
             get
             {
-                return _products;
+                return _lineItems;
             }
             set
             {
-                _products = value;
+                _lineItems = value;
             }
         }
         public List<Orders> Orders
@@ -58,7 +58,7 @@ namespace Models
 
         public override string ToString()
         {
-            return $"Name: {Name} \nAddress: {Address} \nProducts: {Products} \nOrders: {Orders}";
+            return $"Name: {Name} \nAddress: {Address} \nProducts: {LineItems} \nOrders: {Orders}";
         }
     }
 }
