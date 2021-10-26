@@ -38,7 +38,17 @@ namespace Data_Access_Logic
 
         public List<Models.Products> GetAllProducts()
         {
-            throw new NotImplementedException();
+            return _context.Products.Select(prod => 
+            new Models.Products()
+            {
+                Name = prod.Name,
+                Price = prod.Price,
+                Description = prod.Description,
+                Brand = prod.Brand,
+                Category = prod.Category,
+                ProductId = prod.ProductId
+            }
+            ).ToList();
         }
 
         public List<Models.Customer> GetCustomerList()

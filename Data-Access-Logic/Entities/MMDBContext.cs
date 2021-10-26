@@ -77,12 +77,12 @@ namespace Data_Access_Logic.Entities
                 entity.HasOne(d => d.Product)
                     .WithMany(p => p.LineItems)
                     .HasForeignKey(d => d.ProductId)
-                    .HasConstraintName("FK__line_item__produ__0A9D95DB");
+                    .HasConstraintName("FK__line_item__produ__160F4887");
 
                 entity.HasOne(d => d.Storefront)
                     .WithMany(p => p.LineItems)
                     .HasForeignKey(d => d.StorefrontId)
-                    .HasConstraintName("FK__line_item__store__0B91BA14");
+                    .HasConstraintName("FK__line_item__store__17036CC0");
             });
 
             modelBuilder.Entity<LineItemOrder>(entity =>
@@ -98,12 +98,12 @@ namespace Data_Access_Logic.Entities
                 entity.HasOne(d => d.LineItem)
                     .WithMany()
                     .HasForeignKey(d => d.LineItemId)
-                    .HasConstraintName("FK__line_item__line___0D7A0286");
+                    .HasConstraintName("FK__line_item__line___18EBB532");
 
                 entity.HasOne(d => d.Order)
                     .WithMany()
                     .HasForeignKey(d => d.OrderId)
-                    .HasConstraintName("FK__line_item__order__0E6E26BF");
+                    .HasConstraintName("FK__line_item__order__19DFD96B");
             });
 
             modelBuilder.Entity<Order>(entity =>
@@ -118,9 +118,16 @@ namespace Data_Access_Logic.Entities
                     .IsUnicode(false)
                     .HasColumnName("address");
 
+                entity.Property(e => e.StorefrontId).HasColumnName("storefront_id");
+
                 entity.Property(e => e.TotatPrice)
                     .HasColumnType("decimal(18, 0)")
                     .HasColumnName("totat_price");
+
+                entity.HasOne(d => d.Storefront)
+                    .WithMany(p => p.Orders)
+                    .HasForeignKey(d => d.StorefrontId)
+                    .HasConstraintName("FK__order___storefro__1332DBDC");
             });
 
             modelBuilder.Entity<Product>(entity =>
@@ -175,13 +182,6 @@ namespace Data_Access_Logic.Entities
                     .HasMaxLength(50)
                     .IsUnicode(false)
                     .HasColumnName("name");
-
-                entity.Property(e => e.OrderId).HasColumnName("order_id");
-
-                entity.HasOne(d => d.Order)
-                    .WithMany(p => p.Storefronts)
-                    .HasForeignKey(d => d.OrderId)
-                    .HasConstraintName("FK__storefron__order__07C12930");
             });
 
             OnModelCreatingPartial(modelBuilder);
