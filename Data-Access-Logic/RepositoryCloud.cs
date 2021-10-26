@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text.Json;
 using Entity = Data_Access_Logic.Entities;
 
@@ -42,7 +43,16 @@ namespace Data_Access_Logic
 
         public List<Models.Customer> GetCustomerList()
         {
-            throw new NotImplementedException();
+            return _context.Customers.Select(cust => 
+            new Models.Customer()
+            {
+                Name = cust.Name,
+                Email = cust.Email,
+                Address = cust.Address,
+                PhoneNumber = cust.PhoneNumber,
+                CustomerId = cust.CustomerId
+            }
+            ).ToList();
         }
 
         public List<Models.LineItems> GetLineItemsList(string p_store)

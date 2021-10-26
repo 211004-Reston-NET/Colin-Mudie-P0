@@ -31,7 +31,7 @@ namespace User_Interface
                     return new AddCustomer(new CustomerBL(new RepositoryCloud(new MMDBContext(options))));
 
                 case MenuType.SearchForCustomer:
-                    return new SearchCustomers(new CustomerBL(new Repository()));
+                    return new SearchCustomers(new CustomerBL(new RepositoryCloud(new MMDBContext(options))));
 
                 case MenuType.ShowStoreFronts:
                     return new ShowStoreFronts(new StoreFrontBL(new Repository()));
