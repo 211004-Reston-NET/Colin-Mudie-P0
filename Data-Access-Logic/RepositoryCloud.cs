@@ -17,7 +17,17 @@ namespace Data_Access_Logic
 
         public Models.Customer AddCustomer(Models.Customer p_customer)
         {
-            throw new NotImplementedException();
+            _context.Customers.Add(
+                new Entity.Customer()
+                {
+                    Name = p_customer.Name,
+                    Email = p_customer.Email,
+                    PhoneNumber = p_customer.PhoneNumber,
+                    Address = p_customer.Address
+                }
+            );
+            _context.SaveChanges();
+            return p_customer;
         }
 
         public List<Models.LineItems> ChangeLineItemsQuantity(List<Models.LineItems> p_lineItems, string p_location)
