@@ -39,7 +39,6 @@ namespace Business_Logic
 
         public Orders PlaceOrder(Customer p_customer, Orders P_order)
         {   
-            Console.WriteLine(P_order);
             return _repo.PlaceOrder(p_customer, P_order);
         }
     }

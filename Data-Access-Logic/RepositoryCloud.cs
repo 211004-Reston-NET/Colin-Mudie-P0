@@ -130,7 +130,32 @@ namespace Data_Access_Logic
 
         public Models.Orders PlaceOrder(Models.Customer p_customer, Models.Orders p_order)
         {
-            Console.WriteLine(p_order);
+            // add order to customer's list of orders
+            var customer = _context.Customers
+                                .First<Entity.Customer>(cust => cust.CustomerId == p_customer.CustomerId);
+            customer.Orders.Add(new Entity.Order()
+                {
+                    Address = p_order.Address,
+                    TotalPrice = p_order.TotalPrice,
+                    StorefrontId = p_order.StoreFrontId,
+                    CustomerId = p_order.CustomerId,
+                });
+
+            var orderID = _context.Orders.FirstOrDefault<Entity.Order>(order => order.CustomerId == p_customer.CustomerId);
+            // add each item to the order using line_item_order
+            foreach (Models.LineItems item in p_order.LineItems)
+            {
+                _context.LineItemOrders.Add(new Entity.LineItemOrder(){
+                    LineItemId = item.LineItemId,
+                    OrderId = orderID.OrderId
+                });
+            }
+            
+            // update stock in correct storefront's lineItems
+
+
+            //save these changes
+            _context.SaveChanges();
             return p_order;
         }
     }

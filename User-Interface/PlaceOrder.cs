@@ -65,7 +65,6 @@ namespace User_Interface
                 
                     foreach (LineItems prod in listOfLineItems)
                     {
-                        Console.WriteLine(prod);
                         if (_inputName == prod.Product.Name.ToLower())
                         {
                             Console.WriteLine($"   How many {_inputName} module's would you like to add?");
@@ -102,6 +101,7 @@ namespace User_Interface
                     return MenuType.PlaceOrder;
                 case "2":
                     //--------- add Order to DB here.---------\\
+                    SingletonCustomer.orders.CustomerId = SingletonCustomer.customer.CustomerId;
                     _customerBL.PlaceOrder(SingletonCustomer.customer, SingletonCustomer.orders);
                     Console.WriteLine("   Order Placed" +
                                     "\n   Press Enter to continue");

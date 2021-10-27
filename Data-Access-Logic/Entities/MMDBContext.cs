@@ -87,22 +87,24 @@ namespace Data_Access_Logic.Entities
 
             modelBuilder.Entity<LineItemOrder>(entity =>
             {
-                entity.HasNoKey();
-
                 entity.ToTable("line_item_order");
+
+                entity.Property(e => e.LineItemOrderId).HasColumnName("line_item_order_id");
 
                 entity.Property(e => e.LineItemId).HasColumnName("line_item_id");
 
                 entity.Property(e => e.OrderId).HasColumnName("order_id");
 
                 entity.HasOne(d => d.LineItem)
-                    .WithMany()
+                    .WithMany(p => p.LineItemOrders)
                     .HasForeignKey(d => d.LineItemId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK__line_item__line___18EBB532");
 
                 entity.HasOne(d => d.Order)
-                    .WithMany()
+                    .WithMany(p => p.LineItemOrders)
                     .HasForeignKey(d => d.OrderId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK__line_item__order__19DFD96B");
             });
 
