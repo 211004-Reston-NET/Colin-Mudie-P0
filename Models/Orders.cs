@@ -10,6 +10,8 @@ namespace Models
         private string _address;
         private decimal _totalPrice;
         public int OrderId { get; set; }
+        public int StoreFrontId { get; set; }
+        
 
         public List<LineItems> LineItems
         {

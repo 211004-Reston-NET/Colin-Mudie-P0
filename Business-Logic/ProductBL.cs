@@ -7,8 +7,8 @@ namespace Business_Logic
 {
     public class ProductBL : IProductBL
     {
-        private Repository _repo;
-        public ProductBL(Repository p_repo)
+        private IRepository _repo;
+        public ProductBL(IRepository p_repo)
         {
             _repo = p_repo;
         }

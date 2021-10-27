@@ -39,7 +39,7 @@ namespace User_Interface
                 case "7": 
                     return MenuType.ReplenishInventory;
                 case "8":
-                    return MenuType.ShowProductsMtP;
+                    return MenuType.ShowLineItems;
                 case "9":
                 // used for testing delete before production.
                     return MenuType.ShowCustomers;

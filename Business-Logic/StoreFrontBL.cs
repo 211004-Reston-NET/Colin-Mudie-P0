@@ -6,8 +6,8 @@ namespace Business_Logic
 {
     public class StoreFrontBL : IStoreFrontBL
     {
-        private Repository _repo;
-        public StoreFrontBL(Repository p_repo)
+        private IRepository _repo;
+        public StoreFrontBL(IRepository p_repo)
         {
             _repo = p_repo;
         }

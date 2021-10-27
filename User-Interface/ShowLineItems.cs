@@ -8,17 +8,15 @@ namespace User_Interface
     public class ShowLineItems : IMenu
     {
         private ILineItemsBL _lineItems;
-        private string _store;
-        public ShowLineItems(ILineItemsBL p_lineItems, string p_store)
+        public ShowLineItems(ILineItemsBL p_lineItems)
         {
             _lineItems = p_lineItems;
-            _store = p_store;
         }
         public void Menu()
         {
             Console.WriteLine($"Current List of Products from {SingletonCustomer.location}" + 
                             "\n-------------------------");
-            List<LineItems> listOfLineItems = _lineItems.GetLineItems(_store);
+            List<LineItems> listOfLineItems = _lineItems.GetLineItems(SingletonCustomer.orders.StoreFrontId);
             foreach (LineItems prod in listOfLineItems)
             {
                 Console.WriteLine(prod);

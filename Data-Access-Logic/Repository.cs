@@ -7,6 +7,7 @@ using Models;
 
 namespace Data_Access_Logic
 {
+
     public class Repository : IRepository
     {
         private const string _filepath = "./../Data-Access-Logic/Database/";
@@ -51,14 +52,14 @@ namespace Data_Access_Logic
             return JsonSerializer.Deserialize<List<Customer>>(_jsonString);
         }
 
-        public List<LineItems> GetLineItemsList(string p_store)
+        public List<LineItems> GetLineItemsList(int p_storeId)
         {
-            switch (p_store)
+            switch (p_storeId)
             {
-                case "Royal Oak":
+                case 1:
                     _jsonString = File.ReadAllText(_filepath+"RoyalOakProducts.json");
                     break;
-                case "Mt Pleasant":
+                case 2:
                     _jsonString = File.ReadAllText(_filepath+"MtPleasantProducts.json");
                     break;
                 default:
@@ -67,6 +68,11 @@ namespace Data_Access_Logic
             }
             
             return JsonSerializer.Deserialize<List<LineItems>>(_jsonString);
+        }
+
+        public Products GetProductByProductId(int p_productId)
+        {
+            throw new NotImplementedException();
         }
 
         public List<StoreFront> GetStoreFrontList()

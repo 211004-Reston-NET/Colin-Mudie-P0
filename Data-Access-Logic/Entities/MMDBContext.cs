@@ -118,15 +118,24 @@ namespace Data_Access_Logic.Entities
                     .IsUnicode(false)
                     .HasColumnName("address");
 
+                entity.Property(e => e.CustomerId).HasColumnName("customer_id");
+
                 entity.Property(e => e.StorefrontId).HasColumnName("storefront_id");
 
-                entity.Property(e => e.TotatPrice)
+                entity.Property(e => e.TotalPrice)
                     .HasColumnType("decimal(18, 0)")
-                    .HasColumnName("totat_price");
+                    .HasColumnName("total_price");
+
+                entity.HasOne(d => d.Customer)
+                    .WithMany(p => p.Orders)
+                    .HasForeignKey(d => d.CustomerId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("order__FK");
 
                 entity.HasOne(d => d.Storefront)
                     .WithMany(p => p.Orders)
                     .HasForeignKey(d => d.StorefrontId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK__order___storefro__1332DBDC");
             });
 

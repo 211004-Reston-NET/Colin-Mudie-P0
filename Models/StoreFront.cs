@@ -10,6 +10,7 @@ namespace Models
         private string _address;
         private List<LineItems> _lineItems;
         private List<Orders> _orders;
+        public int StoreFrontId { get; set; }
 
         //properties
         public string Name { 

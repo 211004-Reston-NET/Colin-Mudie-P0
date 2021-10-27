@@ -12,14 +12,6 @@ namespace Data_Access_Logic
         Customer AddCustomer(Customer p_customer);
 
         /// <summary>
-        /// updates the LineItems with the new list of LineItems to update quantities.
-        /// </summary>
-        /// <param name="p_lineItems"> the LineItem that will be changed, contains new quantity value. </param>
-        /// <param name="p_location"> the location so we know which list of lineItems to look for. </param>
-        /// <returns> returns the updated list of LineItems. </returns>
-        List<LineItems> ChangeLineItemsQuantity(List<LineItems> p_lineItems, string p_location);
-
-        /// <summary>
         /// This will return a list of Customers stored in the database
         /// </summary>
         /// <returns> will return a list of Customers</returns>
@@ -34,9 +26,9 @@ namespace Data_Access_Logic
         /// <summary>
         ///     This will return a list of products from the db.
         /// </summary>
-        /// <param name="p_store"> the parameter being passed in will be the store name, in order to determine which stores product list to view. </param>
+        /// <param name="p_storeId"> The ID of the store to retrieve the Line Items from. </param>
         /// <returns> will return a list of products. </returns>
-        List<LineItems> GetLineItemsList(string p_store);
+        List<LineItems> GetLineItemsList(int p_storeId);
 
         /// <summary>
         ///     This will grab the current list of customers, then grab the current list of Orders for our selected Customer,
@@ -52,5 +44,12 @@ namespace Data_Access_Logic
         /// </summary>
         /// <returns> Will return a list of products </returns>
         List<Products> GetAllProducts();
+
+        /// <summary>
+        ///     This will return 1 product and will require the products product_id.
+        /// </summary>
+        /// <param name="p_productId"> the product_id that will match in the database </param>
+        /// <returns> returns a single Products class </returns>
+        Products GetProductByProductId(int p_productId);
     }
 }

@@ -8,18 +8,16 @@ namespace User_Interface
     public class PlaceOrder : IMenu
     {
         private ILineItemsBL _lineItems;
-        private string _store;
         private ICustomerBL _customerBL;
-        public PlaceOrder(ICustomerBL p_customerBL, ILineItemsBL p_lineItems, string p_store)
+        public PlaceOrder(ICustomerBL p_customerBL, ILineItemsBL p_lineItems)
         {
             _customerBL = p_customerBL;
             _lineItems = p_lineItems;
-            _store = p_store;
         }
         public void Menu()
         {
         
-                List<LineItems> listOfLineItems = _lineItems.GetLineItems(_store);
+                List<LineItems> listOfLineItems = _lineItems.GetLineItems(SingletonCustomer.orders.StoreFrontId);
             
             
             Console.WriteLine($"Current List of Products from {SingletonCustomer.location}");
@@ -57,7 +55,7 @@ namespace User_Interface
 
         public MenuType UserChoice()
         {
-            List<LineItems> listOfLineItems = _lineItems.GetLineItems(_store);
+            List<LineItems> listOfLineItems = _lineItems.GetLineItems(SingletonCustomer.orders.StoreFrontId);
             string userChoice = Console.ReadLine();
             switch (userChoice)
             {
@@ -73,7 +71,7 @@ namespace User_Interface
                             Console.WriteLine($"   How many {_inputName} module's would you like to add?");
                             int _inputQuantity = int.Parse(Console.ReadLine().Trim());
                             LineItems tempProduct = prod;
-                            _lineItems.ChangeLineItemsQuantity(tempProduct, _store);
+                            // _lineItems.ChangeLineItemsQuantity(tempProduct, _store);
 
                             prod.Quantity =_inputQuantity;
                             SingletonCustomer.orders.LineItems.Add(prod);

@@ -34,26 +34,23 @@ namespace User_Interface
                     return new SearchCustomers(new CustomerBL(new RepositoryCloud(new MMDBContext(options))));
 
                 case MenuType.ShowStoreFronts:
-                    return new ShowStoreFronts(new StoreFrontBL(new Repository()));
+                    return new ShowStoreFronts(new StoreFrontBL(new RepositoryCloud(new MMDBContext(options))));
 
-                case MenuType.ShowProductsMtP:
-                    return new ShowLineItems(new LineItemsBL(new Repository()), "Mt Pleasant");
-
-                case MenuType.ShowProductsROak:
-                    return new ShowLineItems(new LineItemsBL(new Repository()), "Royal Oak");
+                case MenuType.ShowLineItems:
+                    return new ShowLineItems(new LineItemsBL(new RepositoryCloud(new MMDBContext(options))));
 
                 case MenuType.SearchByCategory:
-                    return new SearchByCategory(new ProductBL(new Repository()));
+                    return new SearchByCategory(new ProductBL(new RepositoryCloud(new MMDBContext(options))));
 
                 case MenuType.PlaceOrder:
-                    return new PlaceOrder(new CustomerBL(new Repository()), new LineItemsBL(new Repository()), SingletonCustomer.location);
+                    return new PlaceOrder(new CustomerBL(new RepositoryCloud(new MMDBContext(options))), new LineItemsBL(new RepositoryCloud(new MMDBContext(options))));
 
                 case MenuType.ViewOrderHistory:
 
                 case MenuType.ReplenishInventory:
 
                 case MenuType.ShowCustomers:
-                    return new ShowCustomers(new CustomerBL(new Repository()));
+                    return new ShowCustomers(new CustomerBL(new RepositoryCloud(new MMDBContext(options))));
 
                 default:
                     return null;
