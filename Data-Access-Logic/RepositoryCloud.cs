@@ -142,17 +142,22 @@ namespace Data_Access_Logic
                 });
 
             var orderID = _context.Orders.FirstOrDefault<Entity.Order>(order => order.CustomerId == p_customer.CustomerId);
-            // add each item to the order using line_item_order
+            
             foreach (Models.LineItems item in p_order.LineItems)
             {
+                // add each item to the order using line_item_order
                 _context.LineItemOrders.Add(new Entity.LineItemOrder(){
                     LineItemId = item.LineItemId,
                     OrderId = orderID.OrderId
                 });
+
+                // update stock in correct storefront's lineItems
+                var stockUpdate = _context.LineItems.FirstOrDefault<Entity.LineItem>(dbItem => dbItem.LineItemId == item.LineItemId);
+                stockUpdate.Quantity = stockUpdate.Quantity-item.Quantity;
             }
             
-            // update stock in correct storefront's lineItems
-
+            
+            
 
             //save these changes
             _context.SaveChanges();
