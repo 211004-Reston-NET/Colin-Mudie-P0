@@ -61,6 +61,24 @@ namespace Data_Access_Logic
             ).ToList();
         }
 
+        public int GetLastOrderId()
+        {
+            int lastOrderId = 0;
+            var listOfOrders = _context.Orders.Select(order => 
+                new Models.Orders 
+                {
+                    OrderId = order.OrderId,
+                }
+            ).ToList();
+            foreach(Models.Orders ord in listOfOrders)
+            {
+                if (ord.OrderId > lastOrderId){
+                    lastOrderId = ord.OrderId;
+                }
+            }
+            return lastOrderId;
+        }
+
         public List<Models.LineItems> GetLineItemsList(int p_storeId)
         {
             return _context.LineItems
@@ -102,10 +120,12 @@ namespace Data_Access_Logic
         public List<Models.StoreFront> GetStoreFrontList()
         {
             return _context.Storefronts.Select(store => 
+                // converting Entities Storefront to Models.StoreFront
                 new Models.StoreFront()
                 {
                     Name = store.Name,
                     Address = store.Address,
+                        // StoreFront.LineItems is a list of LineItems, in order to convert a list of Entities.LineItems to Models.
                     LineItems = store.LineItems.Select(item => new Models.LineItems(){
                         Quantity = item.Quantity,
                         Product = new Models.Products(){
@@ -118,6 +138,7 @@ namespace Data_Access_Logic
                         }, 
                         LineItemId = item.LineItemId
                     }).ToList(),
+                        // 
                     Orders = store.Orders.Select(order => new Models.Orders(){
                         OrderId = order.OrderId,
                         Address = order.Address,
@@ -140,28 +161,32 @@ namespace Data_Access_Logic
                     StorefrontId = p_order.StoreFrontId,
                     CustomerId = p_order.CustomerId,
                 });
-
-            var orderID = _context.Orders.FirstOrDefault<Entity.Order>(order => order.CustomerId == p_customer.CustomerId);
+            _context.SaveChanges();
+            int lastOrderId = GetLastOrderId();
+            UpdateStock(lastOrderId, p_order);
             
+            return p_order;
+        }
+
+        public void UpdateStock(int p_orderId, Models.Orders p_order)
+        {
+
             foreach (Models.LineItems item in p_order.LineItems)
             {
                 // add each item to the order using line_item_order
-                _context.LineItemOrders.Add(new Entity.LineItemOrder(){
+                _context.LineItemOrders.Add(new Entity.LineItemOrder()
+                {
                     LineItemId = item.LineItemId,
-                    OrderId = orderID.OrderId
+                    OrderId = p_orderId
                 });
 
                 // update stock in correct storefront's lineItems
                 var stockUpdate = _context.LineItems.FirstOrDefault<Entity.LineItem>(dbItem => dbItem.LineItemId == item.LineItemId);
-                stockUpdate.Quantity = stockUpdate.Quantity-item.Quantity;
+                stockUpdate.Quantity = stockUpdate.Quantity - item.Quantity;
             }
-            
-            
-            
 
             //save these changes
             _context.SaveChanges();
-            return p_order;
         }
     }
 }

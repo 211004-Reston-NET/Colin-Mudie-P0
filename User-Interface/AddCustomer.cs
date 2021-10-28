@@ -6,7 +6,6 @@ namespace User_Interface
 {
     public class AddCustomer : IMenu
     {
-        // private static Customer _customer = new Customer();
         private ICustomerBL _customerBL;
         public AddCustomer(ICustomerBL p_customerBL)
         {
@@ -65,6 +64,7 @@ namespace User_Interface
                         Console.ReadLine();
                         return MenuType.AddCustomer;
                     }
+                    SingletonCustomer.customer = _customerBL.GetSingleCustomer(SingletonCustomer.customer.Name, SingletonCustomer.customer.Email);
                     Console.WriteLine($"{SingletonCustomer.customer.Name} has been added to our list of customers. \n   Please press enter to continue.");
                     Console.ReadLine();
                     return MenuType.MainMenu;

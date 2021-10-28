@@ -48,11 +48,16 @@ namespace Models
         }
         public override string ToString()
         {
-            // foreach (LineItems lineItem in _lineItems)
-            // {
-
-            // }
-            return $"Items: {LineItems} \nAddress: {Address} \n____________ \nPrice: {TotalPrice}";
+            string items = "";
+            foreach (LineItems item in _lineItems)
+            {
+                items += 
+            $"\n-------------------------"+
+            $"\n{item.Product.Name}"+
+            $" \nPrice: {item.Product.Price}";
+            }
+            return $"{items} \nAddress: {Address} \n_________________________ \nTotal Price: {TotalPrice}";
+            
         }
     }
 }

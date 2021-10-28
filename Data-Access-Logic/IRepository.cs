@@ -16,7 +16,7 @@ namespace Data_Access_Logic
         /// </summary>
         /// <returns> will return a list of Customers</returns>
         List<Customer> GetCustomerList();
-        
+
         /// <summary>
         ///     This will return a list of Store Fronts from the db.
         /// </summary>
@@ -51,5 +51,19 @@ namespace Data_Access_Logic
         /// <param name="p_productId"> the product_id that will match in the database </param>
         /// <returns> returns a single Products class </returns>
         Products GetProductByProductId(int p_productId);
+
+        /// <summary>
+        ///     This will get all orders from DB, then will find the most recent order and return it.
+        ///     It is used for PlaceOrder(), so that we can find the order_id of the order that was just placed.
+        /// </summary>
+        /// <returns> Last order_id that was just placed. </returns>
+        int GetLastOrderId();
+
+        /// <summary>
+        ///     Will update the stock of the 
+        /// </summary>
+        /// <param name="p_orderId"> the order id that will be added to the list of LineItems in p_order. </param>
+        /// <param name="p_order"> Order that contains the line Items to add order_id to </param>
+        void UpdateStock(int p_orderId, Orders p_order);
     }
 }

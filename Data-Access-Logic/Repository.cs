@@ -52,6 +52,11 @@ namespace Data_Access_Logic
             return JsonSerializer.Deserialize<List<Customer>>(_jsonString);
         }
 
+        public int GetLastOrderId()
+        {
+            throw new NotImplementedException();
+        }
+
         public List<LineItems> GetLineItemsList(int p_storeId)
         {
             switch (p_storeId)
@@ -97,6 +102,11 @@ namespace Data_Access_Logic
                 }
             }
             return p_order;
+        }
+
+        public void UpdateStock(int p_orderId, Orders p_order)
+        {
+            throw new NotImplementedException();
         }
     }
 }

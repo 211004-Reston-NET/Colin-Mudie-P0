@@ -72,9 +72,8 @@ namespace User_Interface
                             LineItems tempProduct = prod;
                             // _lineItems.ChangeLineItemsQuantity(tempProduct, _store);
 
-                            prod.Quantity =_inputQuantity;
-                            SingletonCustomer.orders.LineItems.Add(prod);
-                            SingletonCustomer.orders.TotalPrice = SingletonCustomer.orders.TotalPrice + (_inputQuantity * prod.Product.Price);
+                            prod.Quantity = 1;
+                            
                             if (_inputQuantity <= 0)
                             {
                                 Console.WriteLine($"   You must enter a quantity higher than 0" +
@@ -84,13 +83,20 @@ namespace User_Interface
                             }
                             else if (_inputQuantity == 1)
                             {
-
+                                SingletonCustomer.orders.LineItems.Add(prod);
+                                SingletonCustomer.orders.TotalPrice = SingletonCustomer.orders.TotalPrice + (_inputQuantity * prod.Product.Price);
                                 Console.WriteLine($"   {_inputQuantity} {_inputName} module has been added to the Shopping Cart" +
                                                 "\n   Press Enter to continue");
                                 Console.ReadLine();
                             }
                             else
-                            {
+                            {   
+                                for (int i = 0; i < _inputQuantity; i++)
+                                {
+                                    SingletonCustomer.orders.LineItems.Add(prod);
+                                }
+                                SingletonCustomer.orders.TotalPrice = SingletonCustomer.orders.TotalPrice + (_inputQuantity * prod.Product.Price);
+                                Console.WriteLine(SingletonCustomer.orders);
                                 Console.WriteLine($"   {_inputQuantity} {_inputName} module's have been added to the Shopping Cart" +
                                                 "\n   Press Enter to continue");
                                 Console.ReadLine();
@@ -102,7 +108,9 @@ namespace User_Interface
                 case "2":
                     //--------- add Order to DB here.---------\\
                     SingletonCustomer.orders.CustomerId = SingletonCustomer.customer.CustomerId;
+                                                                        Console.WriteLine(SingletonCustomer.orders); ///
                     _customerBL.PlaceOrder(SingletonCustomer.customer, SingletonCustomer.orders);
+                    
                     Console.WriteLine("   Order Placed" +
                                     "\n   Press Enter to continue");
                     Console.ReadLine();

@@ -20,6 +20,7 @@ namespace User_Interface
             foreach (LineItems prod in listOfLineItems)
             {
                 Console.WriteLine(prod);
+                Console.WriteLine($"ID: {prod.Product.ProductId}");
                 Console.WriteLine("-------------------------");
             }
             Console.WriteLine("   [1] - Place an Order" + 
