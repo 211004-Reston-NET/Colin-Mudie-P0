@@ -30,6 +30,9 @@ namespace User_Interface
                 case MenuType.AddCustomer:
                     return new AddCustomer(new CustomerBL(new RepositoryCloud(new MMDBContext(options))));
 
+                case MenuType.CustomerMenu:
+                    return new CustomerMenu(new CustomerBL(new RepositoryCloud(new MMDBContext(options))));
+
                 case MenuType.SearchForCustomer:
                     return new SearchCustomers(new CustomerBL(new RepositoryCloud(new MMDBContext(options))));
 
@@ -46,6 +49,7 @@ namespace User_Interface
                     return new PlaceOrder(new CustomerBL(new RepositoryCloud(new MMDBContext(options))), new LineItemsBL(new RepositoryCloud(new MMDBContext(options))));
 
                 case MenuType.ViewOrderHistory:
+                    return new ShowOrders(new OrderBL(new RepositoryCloud(new MMDBContext(options))));
 
                 case MenuType.ReplenishInventory:
 

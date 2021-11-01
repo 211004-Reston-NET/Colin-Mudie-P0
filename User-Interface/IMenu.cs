@@ -7,6 +7,7 @@ namespace User_Interface
         AddCustomer,
         ShowCustomers,
         SearchForCustomer,
+        CustomerMenu,
         ShowStoreFronts,
         // ShowProductsMtP,
         ShowLineItems,

@@ -56,7 +56,7 @@ namespace Models
             $"\n{item.Product.Name}"+
             $" \nPrice: {item.Product.Price}";
             }
-            return $"{items} \nAddress: {Address} \n_________________________ \nTotal Price: {TotalPrice}";
+            return $"{items}\n_________________________ \nAddress: {Address}  \nTotal Price: {TotalPrice}";
             
         }
     }

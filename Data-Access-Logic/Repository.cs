@@ -7,8 +7,8 @@ using Models;
 
 namespace Data_Access_Logic
 {
-
-    public class Repository : IRepository
+public class Repository
+    // public class Repository : IRepository
     {
         private const string _filepath = "./../Data-Access-Logic/Database/";
         private string _jsonString;
@@ -20,6 +20,11 @@ namespace Data_Access_Logic
 
             File.WriteAllText(_filepath+"Customer.json", _jsonString);
             return p_customer;
+        }
+
+        public List<Orders> AddLineItemsListToOrdersList(List<Orders> p_order)
+        {
+            throw new NotImplementedException();
         }
 
         public List<LineItems> ChangeLineItemsQuantity(List<LineItems> p_lineItems, string p_location)
@@ -73,6 +78,11 @@ namespace Data_Access_Logic
             }
             
             return JsonSerializer.Deserialize<List<LineItems>>(_jsonString);
+        }
+
+        public List<Orders> GetOrdersList(string p_cust_or_store, int p_id)
+        {
+            throw new NotImplementedException();
         }
 
         public Products GetProductByProductId(int p_productId)

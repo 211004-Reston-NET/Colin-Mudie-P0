@@ -69,9 +69,6 @@ namespace User_Interface
                         {
                             Console.WriteLine($"   How many {_inputName} module's would you like to add?");
                             int _inputQuantity = int.Parse(Console.ReadLine().Trim());
-                            LineItems tempProduct = prod;
-                            // _lineItems.ChangeLineItemsQuantity(tempProduct, _store);
-
                             prod.Quantity = 1;
                             
                             if (_inputQuantity <= 0)
@@ -84,7 +81,7 @@ namespace User_Interface
                             else if (_inputQuantity == 1)
                             {
                                 SingletonCustomer.orders.LineItems.Add(prod);
-                                SingletonCustomer.orders.TotalPrice = SingletonCustomer.orders.TotalPrice + (_inputQuantity * prod.Product.Price);
+                                SingletonCustomer.orders.TotalPrice += (_inputQuantity * prod.Product.Price);
                                 Console.WriteLine($"   {_inputQuantity} {_inputName} module has been added to the Shopping Cart" +
                                                 "\n   Press Enter to continue");
                                 Console.ReadLine();
@@ -95,7 +92,7 @@ namespace User_Interface
                                 {
                                     SingletonCustomer.orders.LineItems.Add(prod);
                                 }
-                                SingletonCustomer.orders.TotalPrice = SingletonCustomer.orders.TotalPrice + (_inputQuantity * prod.Product.Price);
+                                SingletonCustomer.orders.TotalPrice += (_inputQuantity * prod.Product.Price);
                                 Console.WriteLine(SingletonCustomer.orders);
                                 Console.WriteLine($"   {_inputQuantity} {_inputName} module's have been added to the Shopping Cart" +
                                                 "\n   Press Enter to continue");
@@ -108,7 +105,6 @@ namespace User_Interface
                 case "2":
                     //--------- add Order to DB here.---------\\
                     SingletonCustomer.orders.CustomerId = SingletonCustomer.customer.CustomerId;
-                                                                        Console.WriteLine(SingletonCustomer.orders); ///
                     _customerBL.PlaceOrder(SingletonCustomer.customer, SingletonCustomer.orders);
                     
                     Console.WriteLine("   Order Placed" +

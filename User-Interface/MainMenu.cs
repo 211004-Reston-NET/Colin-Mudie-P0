@@ -16,6 +16,7 @@ namespace User_Interface
             "\n   [6]: View Order History" +
             "\n   [7]: Replenish Inventory" +
             "\n   [8]: View Products" +
+            "\n   [9]: Edit Customer"+
             "\n\n   [0]: Exit");
         }
 
@@ -42,7 +43,7 @@ namespace User_Interface
                     return MenuType.ShowLineItems;
                 case "9":
                 // used for testing delete before production.
-                    return MenuType.ShowCustomers;
+                    return MenuType.CustomerMenu;
                 case "0":
                     return MenuType.Exit;
                 default:

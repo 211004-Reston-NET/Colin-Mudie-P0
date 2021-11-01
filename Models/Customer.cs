@@ -26,7 +26,6 @@ namespace Models
                 }
                 _name = value;
             }
-
         }
 
         public string Address

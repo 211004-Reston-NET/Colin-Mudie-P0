@@ -59,7 +59,7 @@ namespace Models
 
         public override string ToString()
         {
-            return $"Name: {Name} \nAddress: {Address} \nProducts: {LineItems} \nOrders: {Orders}";
+            return $"Name: {Name} \nAddress: {Address}";
         }
     }
 }

@@ -20,10 +20,10 @@ namespace User_Interface
             foreach (LineItems prod in listOfLineItems)
             {
                 Console.WriteLine(prod);
-                Console.WriteLine($"ID: {prod.Product.ProductId}");
                 Console.WriteLine("-------------------------");
             }
-            Console.WriteLine("   [1] - Place an Order" + 
+            Console.WriteLine($"   [2] - View orders from {SingletonCustomer.location}"+
+                            "\n   [1] - Place an Order" + 
                             "\n   [0] - Go back");
         }
 
@@ -32,6 +32,9 @@ namespace User_Interface
             string userChoice = Console.ReadLine();
             switch (userChoice)
             {   
+                case "2":
+                    SingletonCustomer.orderType = "store";
+                    return MenuType.ViewOrderHistory;
                 case "1":
                     return MenuType.PlaceOrder;
                 case "0":

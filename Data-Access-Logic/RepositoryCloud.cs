@@ -32,6 +32,30 @@ namespace Data_Access_Logic
             return p_customer;
         }
 
+        public List<Models.Orders> AddLineItemsListToOrdersList(List<Orders> p_orderList)
+        {   
+            for (int i = 0; i < p_orderList.Count; i++)
+            {
+                p_orderList[i].LineItems = _context.LineItemOrders
+                    .Where(lio => lio.OrderId == p_orderList[i].OrderId)
+                    .Select(lio => 
+                        new Models.LineItems(){
+                            LineItemId = lio.LineItemId
+                        }
+                    ).ToList();
+                for (int j = 0; j < p_orderList[i].LineItems.Count; j++)
+                {
+                    var tempLine = _context.LineItems
+                        .FirstOrDefault<Entity.LineItem>(item => item.LineItemId == p_orderList[i].LineItems[j].LineItemId);
+                    p_orderList[i].LineItems[j].ProductId = tempLine.ProductId;
+                    p_orderList[i].LineItems[j].Quantity = tempLine.Quantity;
+                    p_orderList[i].LineItems[j].StoreFrontId = tempLine.StorefrontId;
+                    p_orderList[i].LineItems[j].Product = GetProductByProductId(p_orderList[i].LineItems[j].ProductId.GetValueOrDefault());
+                }
+            }
+            return p_orderList;
+        }
+
         public List<Models.Products> GetAllProducts()
         {
             return _context.Products.Select(prod => 
@@ -56,7 +80,12 @@ namespace Data_Access_Logic
                 Email = cust.Email,
                 Address = cust.Address,
                 PhoneNumber = cust.PhoneNumber,
-                CustomerId = cust.CustomerId
+                CustomerId = cust.CustomerId,
+                Orders = cust.Orders.Select(order => new Models.Orders(){
+                    OrderId = order.OrderId,
+                    Address = order.Address,
+                    TotalPrice = order.TotalPrice
+                }).ToList()
             }
             ).ToList();
         }
@@ -78,7 +107,6 @@ namespace Data_Access_Logic
             }
             return lastOrderId;
         }
-
         public List<Models.LineItems> GetLineItemsList(int p_storeId)
         {
             return _context.LineItems
@@ -99,6 +127,42 @@ namespace Data_Access_Logic
                     StoreFrontId = item.StorefrontId
                 }
             ).ToList();
+        }
+
+        public List<Orders> GetOrdersList(string p_customer_or_store, int p_id)
+        {
+            List<Models.Orders> listOfOrders = new List<Orders>();
+            switch (p_customer_or_store)
+            {
+                case "store":
+                    return _context.Orders
+                    .Where(order => order.StorefrontId == p_id)
+                    .Select(order => 
+                        new Models.Orders()
+                        {
+                            Address = order.Address,
+                            OrderId = order.OrderId,
+                            StoreFrontId = order.StorefrontId,
+                            CustomerId = order.CustomerId,
+                            TotalPrice = order.TotalPrice
+                            }
+                        ).ToList();
+                case "customer":
+                    return _context.Orders
+                    .Where(order => order.CustomerId == p_id)
+                    .Select(order =>
+                        new Models.Orders()
+                        {
+                            Address = order.Address,
+                            OrderId = order.OrderId,
+                            StoreFrontId = order.StorefrontId,
+                            CustomerId = order.CustomerId,
+                            TotalPrice = order.TotalPrice
+                        }
+                    ).ToList();
+                default:
+                    return null;
+            }
         }
 
         public Models.Products GetProductByProductId(int p_productId)
