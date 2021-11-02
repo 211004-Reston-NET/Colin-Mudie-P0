@@ -12,11 +12,7 @@ namespace User_Interface
             "\n   [2]: Login" +
             "\n   [3]: View Store Fronts" +
             "\n   [4]: Search Products by Category" +
-            "\n   [5]: Place Order" +
-            "\n   [6]: View Order History" +
-            "\n   [7]: Replenish Inventory" +
-            "\n   [8]: View Products" +
-            "\n   [9]: Edit Customer"+
+            "\n   [5]: Edit Customer"+
             "\n\n   [0]: Exit");
         }
 
@@ -34,15 +30,6 @@ namespace User_Interface
                 case "4":
                     return MenuType.SearchByCategory;
                 case "5":
-                    return MenuType.PlaceOrder;
-                case "6": 
-                    return MenuType.ViewOrderHistory;
-                case "7": 
-                    return MenuType.ReplenishInventory;
-                case "8":
-                    return MenuType.ShowLineItems;
-                case "9":
-                // used for testing delete before production.
                     return MenuType.CustomerMenu;
                 case "0":
                     return MenuType.Exit;
