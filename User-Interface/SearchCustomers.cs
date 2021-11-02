@@ -34,12 +34,12 @@ namespace User_Interface
             switch (userChoice)
             {
                 case "1":
-                    Console.WriteLine("Type in the new value for the Name");
+                    Console.WriteLine("   Type in the new value for the Name");
                     SingletonCustomer.customer.Name = Console.ReadLine().Trim().ToLower(); 
                     return MenuType.SearchForCustomer;
 
                 case "2":
-                    Console.WriteLine("Type in the new value for the Email");
+                    Console.WriteLine("   Type in the new value for the Email");
                     SingletonCustomer.customer.Email = Console.ReadLine().Trim().ToLower(); 
                     return MenuType.SearchForCustomer;
 
@@ -48,12 +48,12 @@ namespace User_Interface
                     if (tempCust != null)
                     {
                         SingletonCustomer.customer = tempCust;
-                        Console.WriteLine($"{SingletonCustomer.customer.Name} was found in the list of customers" +
+                        Console.WriteLine($"   {SingletonCustomer.customer.Name} was found in the list of customers" +
                                             "\n   Please press enter to continue.");
                         Console.ReadLine();
                         return MenuType.MainMenu;
                     }
-                    Console.WriteLine($"We couldn't find {SingletonCustomer.customer.Name}, please double check you have the correct information." +
+                    Console.WriteLine($"   We couldn't find {SingletonCustomer.customer.Name}, please double check you have the correct information." +
                                     "\n   Please press enter to continue.");
                     Console.ReadLine();
                     return MenuType.SearchForCustomer;
@@ -62,7 +62,7 @@ namespace User_Interface
                     return MenuType.StartMenu;
 
                 default:
-                    Console.WriteLine("Please input a valid response!" +
+                    Console.WriteLine("   Please input a valid response!" +
                                     "\n   Pleas press enter to continue");
                     Console.ReadLine();
                     return MenuType.SearchForCustomer;

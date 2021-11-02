@@ -35,8 +35,8 @@ namespace User_Interface
                 case "0":
                     return MenuType.MainMenu;
                 default:
-                    Console.WriteLine("Please input a valid response!"+
-                                    "\nPress Enter to continue");
+                    Console.WriteLine("   Please input a valid response!"+
+                                    "\n   Press Enter to continue");
                     Console.ReadLine();
                     return MenuType.MainMenu;
             }

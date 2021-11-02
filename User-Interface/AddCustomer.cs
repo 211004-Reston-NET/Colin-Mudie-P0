@@ -33,22 +33,22 @@ namespace User_Interface
             switch (userChoice)
             {
                 case "1":
-                    Console.WriteLine("Type in the new value for the Name");
+                    Console.WriteLine("   Type in the new value for the Name");
                     SingletonCustomer.customer.Name = Console.ReadLine().Trim().ToLower();
                     return MenuType.AddCustomer;
 
                 case "2":
-                    Console.WriteLine("Type in the new value for the Address");
+                    Console.WriteLine("   Type in the new value for the Address");
                     SingletonCustomer.customer.Address = Console.ReadLine().Trim().ToLower();
                     return MenuType.AddCustomer;
 
                 case "3":
-                    Console.WriteLine("Type in the new value for the Email");
+                    Console.WriteLine("   Type in the new value for the Email");
                     SingletonCustomer.customer.Email = Console.ReadLine().Trim().ToLower();
                     return MenuType.AddCustomer;
 
                 case "4":
-                    Console.WriteLine("Type in the new value for Phone Number");
+                    Console.WriteLine("   Type in the new value for Phone Number");
                     SingletonCustomer.customer.PhoneNumber = Console.ReadLine().Trim();
                     return MenuType.AddCustomer;
 
@@ -59,13 +59,13 @@ namespace User_Interface
                     }
                     catch (System.Exception exception)
                     {
-                        Console.WriteLine($"{exception.Message}"+
-                                        "\nPress Enter to continue");
+                        Console.WriteLine($"   {exception.Message}"+
+                                        "\n   Press Enter to continue");
                         Console.ReadLine();
                         return MenuType.AddCustomer;
                     }
                     SingletonCustomer.customer = _customerBL.GetSingleCustomer(SingletonCustomer.customer.Name, SingletonCustomer.customer.Email);
-                    Console.WriteLine($"{SingletonCustomer.customer.Name} has been added to our list of customers. \n   Please press enter to continue.");
+                    Console.WriteLine($"   {SingletonCustomer.customer.Name} has been added to our list of customers. \n   Please press enter to continue.");
                     Console.ReadLine();
                     return MenuType.MainMenu;
 
@@ -73,8 +73,8 @@ namespace User_Interface
                     return MenuType.StartMenu;
 
                 default:
-                    Console.WriteLine("Please input a valid response!"+
-                                    "\nPress Enter to continue");
+                    Console.WriteLine("   Please input a valid response!"+
+                                    "\n   Press Enter to continue");
                     Console.ReadLine();
                     return MenuType.AddCustomer;
             }

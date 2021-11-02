@@ -31,7 +31,7 @@ namespace User_Interface
                 {
                     stillOn = false;
                     AscArt();
-                    Console.WriteLine("Now Exiting," +
+                    Console.WriteLine("   Now Exiting," +
                                     "\n   Thank you for using the Store Manager!");
                 }
                 else
