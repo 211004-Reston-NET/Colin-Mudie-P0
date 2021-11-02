@@ -232,6 +232,14 @@ namespace Data_Access_Logic
             return p_order;
         }
 
+        public void RefreshStock(int p_lineItemId, int p_quantity)
+        {
+            var query = _context.LineItems
+                .FirstOrDefault<Entity.LineItem>(dbItem => dbItem.LineItemId == p_lineItemId);
+            query.Quantity = p_quantity;
+            _context.SaveChanges();
+        }
+
         public void UpdateStock(int p_orderId, Models.Orders p_order)
         {
 

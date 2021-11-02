@@ -51,7 +51,8 @@ namespace User_Interface
                 case MenuType.ViewOrderHistory:
                     return new ShowOrders(new OrderBL(new RepositoryCloud(new MMDBContext(options))));
 
-                case MenuType.ReplenishInventory:
+                case MenuType.StockRefresh:
+                    return new StockRefresh(new LineItemsBL(new RepositoryCloud(new MMDBContext(options))));
 
                 case MenuType.ShowCustomers:
                     return new ShowCustomers(new CustomerBL(new RepositoryCloud(new MMDBContext(options))));

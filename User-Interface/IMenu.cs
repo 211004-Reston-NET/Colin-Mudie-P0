@@ -9,12 +9,11 @@ namespace User_Interface
         SearchForCustomer,
         CustomerMenu,
         ShowStoreFronts,
-        // ShowProductsMtP,
         ShowLineItems,
         SearchByCategory,
         PlaceOrder,
         ViewOrderHistory,
-        ReplenishInventory,
+        StockRefresh,
         Exit
     }
     public interface IMenu
