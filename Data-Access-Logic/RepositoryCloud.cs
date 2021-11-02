@@ -240,6 +240,17 @@ namespace Data_Access_Logic
             _context.SaveChanges();
         }
 
+        public void UpdateCustomer(Customer p_customer)
+        {
+            var query = _context.Customers
+            .FirstOrDefault(cust => cust.CustomerId == p_customer.CustomerId);
+            query.Name = p_customer.Name;
+            query.Address = p_customer.Address;
+            query.Email = p_customer.Email;
+            query.PhoneNumber = p_customer.PhoneNumber;
+            _context.SaveChanges();
+        }
+
         public void UpdateStock(int p_orderId, Models.Orders p_order)
         {
 

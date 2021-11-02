@@ -88,5 +88,11 @@ namespace Data_Access_Logic
         /// /// <param name="p_lineItemId"> this is the ID for the LineItem that will be updated. </param>
         /// <param name="p_quantity"> This is the quantity that the LineItem will be updated to. </param>
         void RefreshStock(int p_lineItemId, int p_quantity);
+
+        /// <summary>
+        /// Will update any values on a given customer. p_customer will contain the customer_id needed to locate the customer to update.
+        /// </summary>
+        /// <param name="p_customer"> the new values and id for the customer to update.</param>
+        void UpdateCustomer(Models.Customer p_customer);
     }
 }

@@ -41,5 +41,10 @@ namespace Business_Logic
         {   
             return _repo.PlaceOrder(p_customer, P_order);
         }
+
+        public void UpdateCustomer(Customer p_customer)
+        {
+            _repo.UpdateCustomer(p_customer);
+        }
     }
 }

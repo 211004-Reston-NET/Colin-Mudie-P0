@@ -35,5 +35,11 @@ namespace Business_Logic
         /// <param name="p_order"> The Order that will be added to the list of Orders on our p_customer </param>
         /// <returns> Will return the Order that was placed. </returns>
         Orders PlaceOrder(Customer p_customer, Orders P_order);
+
+        /// <summary>
+        /// Will update any values on a given customer. p_customer will contain the customer_id needed to locate the customer to update.
+        /// </summary>
+        /// <param name="p_customer"> the new values and id for the customer to update.</param>
+        void UpdateCustomer(Models.Customer p_customer);
     }
 }
