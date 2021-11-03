@@ -42,23 +42,37 @@ namespace User_Interface
                 case "1":
                     Console.WriteLine("   Please Type the name of the product you would like to restock.");
                     string _inputName = Console.ReadLine().Trim().ToLower();
-                    for (int i = 0; i < _stockList.Count; i++)
-                    {
-                        if (_inputName == _stockList[i].Product.Name.ToLower())
+                    LineItems lineItemsSearch = _lineItems.GetLineItemSearch(_inputName, SingletonCustomer.orders.StoreFrontId);
+                    Console.WriteLine($"   Is this correct Module: {lineItemsSearch.Product.Name}" +
+                                        "\n   [1] - Yes" +
+                                        "\n   [2] - No");
+                    string confirmPick = Console.ReadLine();
+                    if (confirmPick == "1")
                         {
                             Console.WriteLine($"   What should {_inputName} module's stock be updated to?");
-                                //try catch block here to check that they entered a number.
-                            int _inputQuantity = int.Parse(Console.ReadLine().Trim());
-                            // edit db here.
-                            _lineItems.RefreshStock(_stockList[i].LineItemId, _inputQuantity);
+                            try
+                            {
+                                int _inputQuantity = int.Parse(Console.ReadLine().Trim());
+                                // edit db here.
+                                _lineItems.RefreshStock(lineItemsSearch.LineItemId, _inputQuantity);
+                            }
+                            catch (System.FormatException)
+                            {
+                                Console.WriteLine("   Please input a number!" +
+                                "\n   Press Enter to continue");
+                                Console.ReadLine();
+                                return MenuType.StockRefresh;
+                            }
+                            
                         }
-                    }
-
                     return MenuType.StockRefresh;
+
                 case "2":
                     return MenuType.ShowLineItems;
+
                 case "0":
                     return MenuType.MainMenu;
+
                 default:
                     Console.WriteLine("   Please input a valid response!" +
                                     "\n   Press Enter to continue");
