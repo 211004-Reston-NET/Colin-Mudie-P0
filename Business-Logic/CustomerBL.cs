@@ -21,7 +21,19 @@ namespace Business_Logic
             // finish exceptions for address, email and phone.
             if (p_customer.Name == null )
             {
-                throw new Exception("You must input customer name.");
+                throw new Exception("You must input a name.");
+            }
+            else if (p_customer.Email == null )
+            {
+                throw new Exception("You must input an email.");
+            }
+            else if (p_customer.PhoneNumber == null)
+            {
+                throw new Exception("You must input a phone number.");
+            }
+            else if (p_customer.Address == null)
+            {
+                throw new Exception("You must input an Address.");
             }
             return _repo.AddCustomer(p_customer);
         }
@@ -44,6 +56,22 @@ namespace Business_Logic
 
         public void UpdateCustomer(Customer p_customer)
         {
+            if (p_customer.Name == null)
+            {
+                throw new Exception("You must input a name.");
+            }
+            else if (p_customer.Email == null)
+            {
+                throw new Exception("You must input an email.");
+            }
+            else if (p_customer.PhoneNumber == null)
+            {
+                throw new Exception("You must input a phone number.");
+            }
+            else if (p_customer.Address == null)
+            {
+                throw new Exception("You must input an Address.");
+            }
             _repo.UpdateCustomer(p_customer);
         }
     }

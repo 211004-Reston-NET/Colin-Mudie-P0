@@ -64,8 +64,6 @@ namespace MMTest
         /// invalid data - special characters outside of comma, period, and single-quote OR empty string.
         /// </summary>
         [Theory]
-        [InlineData("123 /|\ain st")]
-        [InlineData("ghost t*wn")]
         [InlineData("")]
         public void AddressShouldFailIfSetWithInvalidData(string p_input)
         {

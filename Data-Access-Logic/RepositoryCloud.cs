@@ -243,7 +243,7 @@ namespace Data_Access_Logic
         public void UpdateCustomer(Customer p_customer)
         {
             var query = _context.Customers
-            .FirstOrDefault(cust => cust.CustomerId == p_customer.CustomerId);
+                            .FirstOrDefault(cust => cust.CustomerId == p_customer.CustomerId);
             query.Name = p_customer.Name;
             query.Address = p_customer.Address;
             query.Email = p_customer.Email;
